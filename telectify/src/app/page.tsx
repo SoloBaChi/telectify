@@ -6,10 +6,11 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between ">
       <div className=" p-4">
-        <nav className=" h-20 w-screen bg-white flex items-center justify-between border-b-2">
+        <nav className=" h-16 w-screen bg-white flex items-center justify-between border-b-2">
           <h3 className="ml-4 text-lg font-bold">Telectify</h3>
           <div>
-            <button className="home-button">Register</button>
+            <button className="home-button register">Register</button>
+            <button className="home-button login">Login</button>
           </div>
         </nav>
         <div className="home-banner h-40 w-screen"></div>
