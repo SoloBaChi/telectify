@@ -1,11 +1,24 @@
 import Link from "next/link";
+import Wave from "./components/wave";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between ">
-      <nav className=" h-20 w-screen bg-white flex items-center border-b-2">
-        <h3 className="ml-3 text-lg font-bold">Telectify</h3>
+      <nav className=" h-20 w-screen bg-white flex items-center justify-between border-b-2">
+        <h3 className="ml-4 text-lg font-bold">Telectify</h3>
+        <div>
+          <button className="home-button">Register</button>
+        </div>
       </nav>
+      <div className="home-banner h-40 w-screen"></div>
+      <Wave />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#2956c9"
+          fill-opacity="1"
+          d="M0,224L48,234.7C96,245,192,267,288,245.3C384,224,480,160,576,133.3C672,107,768,117,864,128C960,139,1056,149,1152,144C1248,139,1344,117,1392,106.7L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+        ></path>
+      </svg>
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex p-4">
         <Link
           href="/signup"
@@ -16,7 +29,6 @@ export default function Home() {
           <code className="font-mono font-bold">Telectify</code>
         </Link>
       </div>
-
       <div className="justify-center lg:p-4">
         <h3 className="mb-3 text-2xl font-bold text-center lg:text-left mt-8">
           Know more about us
@@ -30,7 +42,6 @@ export default function Home() {
           and a more sustainable approach to energy management.
         </p>
       </div>
-
       <section className="features mb-32">
         <h3 className="mb-4 text-2xl font-bold text-center lg:text-left mt-8 border-b-4 border-red-800">
           Key Features
@@ -79,7 +90,6 @@ export default function Home() {
           </figure>
         </div>
       </section>
-
       <section className="why-us">
         <h3 className="mb-4 text-2xl text-center lg:text-left font-bold border-b-4 border-red-800">
           Why Telectify
@@ -115,7 +125,6 @@ export default function Home() {
           </figure>
         </div>
       </section>
-
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <Link
           href="/signup"
