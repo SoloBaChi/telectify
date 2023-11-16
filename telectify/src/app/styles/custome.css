@@ -1,0 +1,41 @@
+/* import poppins goole font */
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Dancing+Script:wght@400;500;600;700&family=Darker+Grotesque:wght@300;400;600&family=Freehand&family=Germania+One&family=Indie+Flower&family=Ingrid+Darling&family=Inter:wght@100&family=Lexend+Deca&family=Lobster&family=Lora&family=Nova+Mono&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Oswald:wght@200;300&family=Overlock+SC&family=Oxygen+Mono&family=Oxygen:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Reggae+One&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.background-blue:hover {
+  background-color: #2956c9;
+}
+.aside-item {
+  transition: color 0.5s ease;
+}
+.aside-item:hover {
+  transition: 0.8s ease;
+}
+.aside-item:hover svg path {
+  fill: #25672f;
+}
+.aside-item.active-item {
+  color: #25672f;
+  font-weight: 800;
+}
+.aside-item.active-item svg path {
+  fill: #25672f;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table,
+td,
+th {
+  padding: 0.4rem;
+}
+th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #25672f;
+}

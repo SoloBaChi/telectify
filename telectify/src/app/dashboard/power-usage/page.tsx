@@ -1,10 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 function Dashboard() {
   return (
-    <section className="h-screen py-4 lg:px-8 bg-[_#f2f2f2]">
+    <section className="min-h-screen py-4 lg:px-8 bg-[_#f2f2f2]">
       <div className="h-full grid-container grid lg:grid-cols-12 gap-4">
         <aside className="h-full bg-[_#fff] lg:col-span-3 sidebar rounded-md pt-8 p-4">
           <Link href="/" className="mb-[_16px] block p-[_0.5rem]">
@@ -79,11 +78,8 @@ function Dashboard() {
               </p>
             </div>
           </Link>
-          <Link
-            href="/dashboard/power-usage"
-            className="mb-[_16px] block p-[_0.5rem]"
-          >
-            <div className="aside-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
+          <Link href="/" className="mb-[_16px] block p-[_0.5rem]">
+            <div className="aside-item active-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
               <svg
                 width="27"
                 height="27"
@@ -192,7 +188,7 @@ function Dashboard() {
             </div>
           </Link>
         </aside>
-        <main className="h-full lg:col-span-9 main-contents rounded-md px-4">
+        <main className="lg:col-span-9 main-contents rounded-md px-4">
           <div className="main-header grid lg:grid-cols-12 gap-4 mb-6">
             <figure className="col-span-6 card rounded-[_10px] bg-[_#fff] p-4">
               <h3 className="text-md text-[_#25672F] font-[_800] pb-2">
@@ -242,10 +238,74 @@ function Dashboard() {
             </figure>
           </div>
 
-          <div className="main-body h-60 bg-[_#fff] p-4 rounded-md">
+          <div className="main-body bg-[_#fff] p-4 rounded-md">
             <h3 className="text-sm font-semibold pl-24">
               No 23 Ziks Drive UNN
             </h3>
+            <div className="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Solomon Chiakonam</th>
+                    <th>Amadi Emmmanuel</th>
+                    <th>Nwangwu Israel</th>
+                    <th>Chijioke Precious</th>
+                    <th>Duration</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0.8kw/hr</td>
+                    <td>0.6kw/hr</td>
+                    <td>0.8kw/hr</td>
+                    <td>0.7kw/hr</td>
+                    <td>Now</td>
+                  </tr>
+                  <tr>
+                    <td>20kw/hr</td>
+                    <td>10kw/hr</td>
+                    <td>40kw/hr</td>
+                    <td>20kw/hr</td>
+                    <td>1hr ago</td>
+                  </tr>
+                  <tr>
+                    <td>40kw/hr</td>
+                    <td>30kw/hr</td>
+                    <td>60kw/hr</td>
+                    <td>50kw/hr</td>
+                    <td>2 hrs ago</td>
+                  </tr>
+                  <tr>
+                    <td>20kw/hr</td>
+                    <td>60kw/hr</td>
+                    <td>20kw/hr</td>
+                    <td>70kw/hr</td>
+                    <td>3 hrs ago</td>
+                  </tr>
+                  <tr>
+                    <td>70kw/hr</td>
+                    <td>70kw/hr</td>
+                    <td>30kw/hr</td>
+                    <td>40kw/hr</td>
+                    <td>4 hrs ago</td>
+                  </tr>
+                  <tr>
+                    <td>90kw/hr</td>
+                    <td>20kw/hr</td>
+                    <td>90kw/hr</td>
+                    <td>80kw/hr</td>
+                    <td>5 hrs ago</td>
+                  </tr>
+                  <tr>
+                    <td>30kw/hr</td>
+                    <td>45kw/hr</td>
+                    <td>50kw/hr</td>
+                    <td>25kw/hr</td>
+                    <td>6 hrs ago</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </main>
       </div>
