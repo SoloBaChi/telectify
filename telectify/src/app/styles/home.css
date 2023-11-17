@@ -40,7 +40,7 @@
 .banner-container {
   position: relative;
   overflow-y: hidden;
-  height: 50vh;
+  height: 80vh;
 }
 .banner-text {
   position: absolute;
@@ -64,6 +64,7 @@
 .home-cta:hover {
   padding: 0.8rem;
 }
+
 @media screen and (width < 768px) {
   .home-button {
     margin-right: 1.8rem;
