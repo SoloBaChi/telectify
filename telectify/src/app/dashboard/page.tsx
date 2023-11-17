@@ -6,7 +6,7 @@ import BarChart from "../components/barChart";
 import BarChart2 from "../components/barChart2";
 import { useState } from "react";
 // import { GiHamburger } from "react-icons/gi";
-import { GiHamburger } from "react-icons/gi";
+import { FaHamburger } from "react-icons/fa";
 
 function Dashboard() {
   const [open, setOpen] = useState(false);
@@ -23,9 +23,9 @@ function Dashboard() {
             className="ml-4"
           />
         </Link>
-        <GiHamburger
+        <FaHamburger
           onClick={() => setOpen((prev) => !prev)}
-          style={{ color: "black" }}
+          style={{ color: "black", marginRight: "1rem" }}
         />
       </nav>
       <div className="h-full grid-container grid lg:grid-cols-12 gap-4">
