@@ -7,7 +7,13 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between ">
       <div className=" p-4">
         <nav className=" h-16 w-screen bg-white flex items-center justify-between border-b-2">
-          <h3 className="ml-4 text-lg font-bold">Telectify</h3>
+          <Image
+            src="/home/telectify.png"
+            alt="logo"
+            width={40}
+            height={40}
+            className="ml-4"
+          />
           <div className="btn">
             <Link href="/signup">
               <button className="home-button register">Register</button>
