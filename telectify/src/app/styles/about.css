@@ -1,0 +1,28 @@
+.home-why-us {
+  position: relative;
+  margin-top: 0rem;
+  /* padding: 0rem 5rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 3rem; */
+  overflow-y: hidden;
+}
+.why-us-image {
+  position: absolute;
+  object-fit: cover;
+  height: 30rem;
+  width: 90rem;
+  margin-left: 7rem;
+  top: 2rem;
+  left: 0;
+}
+.home-why-us div figure {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}

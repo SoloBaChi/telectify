@@ -270,17 +270,17 @@ function Dashboard() {
                 <div className="card-row grid grid-cols-12 gap-4">
                   <figure className="col-span-4 md:col-span-2 lg:col-span-3">
                     <span className="high h-9 block p-2 mb-2 bg-[_#2956c9] rounded-[_4px]"></span>
-                    <p className="text-center">800kwh</p>
+                    <p className="text-center">60kwh</p>
                     <p className="text-center">High</p>
                   </figure>
                   <figure className="col-span-4 md:col-span-2 lg:col-span-3">
                     <span className="mid h-9 block p-2 mb-2 bg-[_#bab01b] rounded-[_4px]"></span>
-                    <p className="text-center">620kwh</p>
+                    <p className="text-center">30kwh</p>
                     <p className="text-center">Mid</p>
                   </figure>
                   <figure className="col-span-4 md:col-span-2 lg:col-span-3 ">
                     <span className="low h-9 block p-2 mb-2 bg-[_#9c9b95] rounded-[_4px]"></span>
-                    <p className="text-center">320kwh</p>
+                    <p className="text-center">10kwh</p>
                     <p className="text-center">Normal</p>
                   </figure>
                 </div>

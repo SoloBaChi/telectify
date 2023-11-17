@@ -1,0 +1,8 @@
+.barchart-container {
+  height: 25rem;
+  overflow-y: hidden;
+}
+.bar-sub {
+  display: flex;
+  align-items: center;
+}

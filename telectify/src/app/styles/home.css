@@ -1,0 +1,143 @@
+.home-banner {
+  background-color: #2956c9;
+  height: 10rem;
+}
+.home-button {
+  margin-right: 1.8rem;
+  border-radius: 1rem;
+  height: 2.6rem;
+  width: 6rem;
+  font-size: 0.9rem;
+  transition:
+    height,
+    width 0.6s ease-in-out;
+}
+.home-button.login {
+  border: 1px solid #9c9c9c;
+}
+.home-button:hover {
+  height: 2.8rem;
+  width: 6.5rem;
+}
+.register {
+  background-color: #2956c9;
+  color: white;
+}
+.login {
+  background-color: white;
+  color: #2956c9;
+}
+
+.home-banner {
+  display: flex;
+  /* position: relative; */
+}
+.home-banner-image {
+  position: absolute;
+  height: 20rem;
+  width: 20rem;
+  top: 8rem;
+  left: 65vw;
+  border-radius: 2rem 5rem 0.9rem 0.3rem;
+}
+
+.banner-container {
+  position: relative;
+  overflow-y: hidden;
+  height: 75vh;
+}
+.banner-text {
+  position: absolute;
+  top: 0rem;
+  width: 60vw;
+  height: 20rem;
+  text-wrap: pretty;
+  text-wrap: balance;
+  padding: 5rem;
+  overflow-y: hidden;
+  color: white;
+  font-size: 1.1rem;
+}
+.home-cta {
+  margin-top: -10rem;
+  margin-bottom: 10rem;
+  margin-left: 15rem;
+  transition: 0.3s ease-in;
+}
+
+.home-cta:hover {
+  padding: 0.8rem;
+}
+
+@media screen and (width < 768px) {
+  .home-button {
+    margin-right: 1.8rem;
+    border-radius: 1rem;
+    height: 2.3rem;
+    width: 5rem;
+    font-size: 0.8rem;
+    transition: 0.6s ease-in-out;
+  }
+  .btn {
+    display: flex;
+  }
+  .home-button:hover {
+    height: 2.4rem;
+    width: 5.6rem;
+  }
+  .register {
+    margin-right: 0.5rem;
+  }
+  .login {
+    margin-right: 1rem;
+  }
+
+  .home-banner {
+    height: 10rem;
+    background-color: white;
+  }
+  .wave {
+    display: none;
+  }
+  .home-banner-image {
+    position: absolute;
+    height: 20rem;
+    width: 20rem;
+    top: 5rem;
+    left: 40vw;
+    border-radius: 2rem 5rem 0.9rem 0.3rem;
+    transition: 0.6s ease-in;
+  }
+
+  .banner-container {
+    position: relative;
+    overflow-y: hidden;
+  }
+  .banner-text {
+    width: 90vw;
+    height: 22rem;
+    text-wrap: pretty;
+    padding: 2rem;
+    overflow-y: hidden;
+    color: black;
+    font-size: 0.91rem;
+
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .home-cta {
+    margin-top: -10rem;
+    margin-bottom: 0rem;
+    margin-left: 15rem;
+    transition: 0.3s ease-in;
+  }
+
+  .home-cta:hover {
+    padding: 0.8rem;
+  }
+}
