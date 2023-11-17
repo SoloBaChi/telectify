@@ -111,7 +111,7 @@
   }
   .banner-text {
     width: 90vw;
-    height: 20rem;
+    height: 22rem;
     text-wrap: pretty;
     padding: 2rem;
     overflow-y: hidden;
@@ -128,7 +128,7 @@
   }
   .home-cta {
     margin-top: -10rem;
-    margin-bottom: -7rem;
+    margin-bottom: -2rem;
     margin-left: 15rem;
     transition: 0.3s ease-in;
   }

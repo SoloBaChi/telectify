@@ -9,8 +9,12 @@ export default function Home() {
         <nav className=" h-16 w-screen bg-white flex items-center justify-between border-b-2">
           <h3 className="ml-4 text-lg font-bold">Telectify</h3>
           <div className="btn">
-            <button className="home-button register">Register</button>
-            <button className="home-button login">Login</button>
+            <Link href="/signup">
+              <button className="home-button register">Register</button>
+            </Link>
+            <Link href="/login">
+              <button className="home-button login">Login</button>
+            </Link>
           </div>
         </nav>
         <div className="banner-container">
