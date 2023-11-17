@@ -40,7 +40,7 @@
 .banner-container {
   position: relative;
   overflow-y: hidden;
-  height: 80vh;
+  height: 75vh;
 }
 .banner-text {
   position: absolute;
@@ -128,7 +128,7 @@
   }
   .home-cta {
     margin-top: -10rem;
-    margin-bottom: 10rem;
+    margin-bottom: -7rem;
     margin-left: 15rem;
     transition: 0.3s ease-in;
   }

@@ -52,58 +52,77 @@ export default function Home() {
             
           </p>
         </div> */}
-        <section className="features mb-32">
-          <h3 className="mb-4 text-2xl font-bold text-center lg:text-left mt-8 border-b-4 border-red-800">
+        <div className="border-b-4 border-blue-100"></div>
+        <section className="features mb-32 home-features">
+          <h3 className="mb-4 text-2xl font-bold text-center lg:text-left mt-8 ">
             Key Features
           </h3>
-          <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:text-left">
-            <figure className="card group rounded-lg border border-transparent-800 p-2 mb-4 transition-colors hover:text-white cursor-pointer background-blue">
-              <h4 className="mb-3 text-lg font-bold">Real-Time Monitoring</h4>
-              <p className="text-sm opacity-50">
-                Stay informed about your energy consumption in real time.
-                Telectify offers live updates, allowing you to track usage
-                patterns and identify opportunities for optimization.
-              </p>
-            </figure>
-            <figure className="card group rounded-lg border border-transparent-800 p-2 mb-4 transition-colors hover:text-white cursor-pointer background-blue">
-              <h4 className="mb-3 text-lg font-bold">Cost Analysis</h4>
-              <p className="text-sm opacity-50">
-                Understand the financial implications of your energy usage.
-                Telectify provides detailed cost analysis tools to help you make
-                informed decisions and save on energy expenses.
-              </p>
-            </figure>
-            <figure className="card group rounded-lg border border-transparent-800 p-2 mb-4 transition-colors hover:text-white cursor-pointer background-blue">
-              <h4 className="mb-3 text-lg font-bold">Intuitive Dashboards</h4>
-              <p className="text-sm opacity-50">
-                Our user-friendly dashboards present complex energy data in a
-                clear and understandable format. Visualize your usage trends,
-                peak hours, and areas for improvement effortlessly.
-              </p>
-            </figure>
-            <figure className="card group rounded-lg border border-transparent-800 p-2 mb-4 transition-colors hover:text-white cursor-pointer background-blue">
-              <h4 className="mb-3 text-lg font-bold">Historical Data</h4>
-              <p className="text-sm opacity-50">
-                Access historical data to track long-term trends and identify
-                areas for improvement. Analyze your energy history to make
-                informed decisions about efficiency upgrades and conservation
-                efforts.
-              </p>
-            </figure>
-            <figure className="card group rounded-lg border border-transparent-800 p-2 mb-4 transition-colors hover:text-white cursor-pointer background-blue">
-              <h4 className="mb-3 text-lg font-bold">Customized Alerts</h4>
-              <p className="text-sm opacity-50">
-                Set personalized alerts to be notified of unusual energy
-                consumption, potential issues, or when predefined thresholds are
-                reached. Stay in control and respond promptly to changes.
-              </p>
-            </figure>
+          <div className="features-container">
+            <Image
+              src="/home/image1.jpg"
+              alt="image1"
+              height={1000}
+              width={1000}
+              className="feature-image"
+            />
+            <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:text-left feature-cards">
+              <figure className="card group rounded-lg border border-transparent-800 p-2 mb-4 transition-colors hover:text-white cursor-pointer background-blue">
+                <h4 className="mb-3 text-lg font-bold">Real-Time Monitoring</h4>
+                <p className="text-sm opacity-50">
+                  Stay informed about your energy consumption in real time.
+                  Telectify offers live updates, allowing you to track usage
+                  patterns and identify opportunities for optimization.
+                </p>
+              </figure>
+              <figure className="card group rounded-lg border border-transparent-800 p-2 mb-4 transition-colors hover:text-white cursor-pointer background-blue">
+                <h4 className="mb-3 text-lg font-bold">Cost Analysis</h4>
+                <p className="text-sm opacity-50">
+                  Understand the financial implications of your energy usage.
+                  Telectify provides detailed cost analysis tools to help you
+                  make informed decisions and save on energy expenses.
+                </p>
+              </figure>
+              <figure className="card group rounded-lg border border-transparent-800 p-2 mb-4 transition-colors hover:text-white cursor-pointer background-blue">
+                <h4 className="mb-3 text-lg font-bold">Intuitive Dashboards</h4>
+                <p className="text-sm opacity-50">
+                  Our user-friendly dashboards present complex energy data in a
+                  clear and understandable format. Visualize your usage trends,
+                  peak hours, and areas for improvement effortlessly.
+                </p>
+              </figure>
+              <figure className="card group rounded-lg border border-transparent-800 p-2 mb-4 transition-colors hover:text-white cursor-pointer background-blue">
+                <h4 className="mb-3 text-lg font-bold">Historical Data</h4>
+                <p className="text-sm opacity-50">
+                  Access historical data to track long-term trends and identify
+                  areas for improvement. Analyze your energy history to make
+                  informed decisions about efficiency upgrades and conservation
+                  efforts.
+                </p>
+              </figure>
+              <figure className="card group rounded-lg border border-transparent-800 p-2 mb-4 transition-colors hover:text-white cursor-pointer background-blue">
+                <h4 className="mb-3 text-lg font-bold">Customized Alerts</h4>
+                <p className="text-sm opacity-50">
+                  Set personalized alerts to be notified of unusual energy
+                  consumption, potential issues, or when predefined thresholds
+                  are reached. Stay in control and respond promptly to changes.
+                </p>
+              </figure>
+            </div>
           </div>
         </section>
-        <section className="why-us">
-          <h3 className="mb-4 text-2xl text-center lg:text-left font-bold border-b-4 border-red-800">
+        <div className="border-b-4 border-blue-100 mb-10"></div>
+
+        <section className="why-us home-why-us">
+          <h3 className="mb-4 text-2xl text-center lg:text-left font-bold">
             Why Telectify
           </h3>
+          <Image
+            src="/home/image1.png"
+            alt="why-us-image"
+            height={1000}
+            width={1000}
+            className="why-us-image"
+          />
           <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:text-left">
             <figure className="card group rounded-lg border border-transparent-800 p-2 mb-4 transition-colors hover:text-white cursor-pointer background-blue">
               <h4 className="mb-3 text-lg font-bold">

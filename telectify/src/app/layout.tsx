@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./styles/custome.css";
 import "./styles/home.css";
+import "./styles/features.css";
+import "./styles/about.css";
 
 export const metadata: Metadata = {
   title: "Telectify",
