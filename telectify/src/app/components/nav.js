@@ -1,5 +1,6 @@
-import Image from "next/image";
+import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Nav() {
   return (
@@ -8,8 +9,8 @@ export default function Nav() {
         <Image
           src="/home/telectify.png"
           alt="logo"
-          width={40}
-          height={40}
+          width={65}
+          height={45}
           className="ml-4"
         />
       </Link>
