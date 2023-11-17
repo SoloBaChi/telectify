@@ -1,8 +1,8 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
-function Dashboard() {
+function Settings() {
   return (
     <>
       <header className="flex flex-row items-center justify-between py-4  px-4 lg:px-10">
@@ -149,7 +149,7 @@ function Dashboard() {
               href="/dashboard/power-usage"
               className="mb-[_16px] block p-[_0.5rem]"
             >
-              <div className="aside-item active-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
+              <div className="aside-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
                 <svg
                   width="27"
                   height="27"
@@ -204,7 +204,7 @@ function Dashboard() {
               href="/dashboard/settings"
               className="mb-[_16px] block p-[_0.5rem]"
             >
-              <div className="aside-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
+              <div className="aside-item active-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
                 <svg
                   width="27"
                   height="27"
@@ -261,128 +261,37 @@ function Dashboard() {
               </div>
             </Link>
           </aside>
-          <main className="lg:col-span-9 main-contents rounded-md">
-            <div className="main-header grid lg:grid-cols-12 gap-4 mb-6">
-              <figure className="col-span-6 card rounded-[_10px] bg-[_#fff] p-4">
-                <h3 className="text-md text-[_#25672F] font-[_800] pb-2">
-                  Tenants Power Usage
-                </h3>
-                <div className="card-row grid grid-cols-12 gap-4">
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3">
-                    <span className="high h-9 block p-2 mb-2 bg-[_#2956c9] rounded-[_4px]"></span>
-                    <p className="text-center">60kwh</p>
-                    <p className="text-center">High</p>
-                  </figure>
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3">
-                    <span className="mid h-9 block p-2 mb-2 bg-[_#bab01b] rounded-[_4px]"></span>
-                    <p className="text-center">30kwh</p>
-                    <p className="text-center">Mid</p>
-                  </figure>
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3 ">
-                    <span className="low h-9 block p-2 mb-2 bg-[_#9c9b95] rounded-[_4px]"></span>
-                    <p className="text-center">10kwh</p>
-                    <p className="text-center">Normal</p>
-                  </figure>
-                </div>
-              </figure>
-
-              {/* col-2 */}
-              <figure className="col-span-6 card rounded-[_10px] bg-[_#fff] p-4">
-                <h3 className="text-md text-[_#25672F] font-[_800] pb-2">
-                  Daily Power Usage
-                </h3>
-                <div className="card-row grid grid-cols-12 gap-4">
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3">
-                    <span className="high h-9 block p-2 mb-2 bg-[_#2956c9] rounded-[_4px]"></span>
-                    <p className="text-center">800kwh</p>
-                    <p className="text-center">High</p>
-                  </figure>
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3">
-                    <span className="mid h-9 block p-2 mb-2 bg-[_#bab01b] rounded-[_4px]"></span>
-                    <p className="text-center">620kwh</p>
-                    <p className="text-center">Mid</p>
-                  </figure>
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3 ">
-                    <span className="low h-9 block p-2 mb-2 bg-[_#9c9b95] rounded-[_4px]"></span>
-                    <p className="text-center">320kwh</p>
-                    <p className="text-center">Normal</p>
-                  </figure>
-                </div>
-              </figure>
-            </div>
-
-            <div className="main-body bg-[_#fff] p-4 rounded-md">
-              <h3 className="text-sm font-semibold pl-24 mb-6">
+          <main className="lg:col-span-9 main-contents rounded-md bg-[_#fff]">
+            <div className="main-body bg-[_#fff] p-4 mt-8 rounded-md">
+              <div className="house-icon text-center">
+                <Image
+                  className="mx-auto mb-4"
+                  src="/assets/images/house-icon.svg"
+                  alt="apartment icon"
+                  width={172}
+                  height={172}
+                  priority
+                />
+              </div>
+              <h3 className="text-sm text-center mb-8 font-semibold">
                 No 23 Ziks Drive UNN
               </h3>
-              <div className="table-container max-w-[_850px] overflow-auto lg:max-w-full lg:overflow-hidden">
-                <table className="table-auto w-[_1024px] md:w-full">
-                  <thead className="pb-4">
-                    <tr>
-                      <th>Solomon Chiakonam</th>
-                      <th>Amadi Emmmanuel</th>
-                      <th>Nwangwu Israel</th>
-                      <th>Chijioke Precious</th>
-                      <th>Duration</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>0.8kw/hr</td>
-                      <td>0.6kw/hr</td>
-                      <td>0.8kw/hr</td>
-                      <td>0.7kw/hr</td>
-                      <td>Now</td>
-                    </tr>
-                    <tr>
-                      <td>20kw/hr</td>
-                      <td>10kw/hr</td>
-                      <td>40kw/hr</td>
-                      <td>20kw/hr</td>
-                      <td>1hr ago</td>
-                    </tr>
-                    <tr>
-                      <td>40kw/hr</td>
-                      <td>30kw/hr</td>
-                      <td>60kw/hr</td>
-                      <td>50kw/hr</td>
-                      <td>2 hrs ago</td>
-                    </tr>
-                    <tr>
-                      <td>20kw/hr</td>
-                      <td>60kw/hr</td>
-                      <td>20kw/hr</td>
-                      <td>70kw/hr</td>
-                      <td>3 hrs ago</td>
-                    </tr>
-                    <tr>
-                      <td>70kw/hr</td>
-                      <td>70kw/hr</td>
-                      <td>30kw/hr</td>
-                      <td>40kw/hr</td>
-                      <td>4 hrs ago</td>
-                    </tr>
-                    <tr>
-                      <td>90kw/hr</td>
-                      <td>20kw/hr</td>
-                      <td>90kw/hr</td>
-                      <td>80kw/hr</td>
-                      <td>5 hrs ago</td>
-                    </tr>
-                    <tr>
-                      <td>30kw/hr</td>
-                      <td>45kw/hr</td>
-                      <td>50kw/hr</td>
-                      <td>25kw/hr</td>
-                      <td>6 hrs ago</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div className="apartment-details flex flex-row flex-nowrap gap-4 justify-center items-end sm:items-start lg:gap-32">
+                <div className="item-properties">
+                  <h4>Apartment Name</h4>
+                  <h4>Address</h4>
+                  <h4>Email</h4>
+                </div>
+                <div className="item-values">
+                  <p>Dreamville</p>
+                  <p>No 1 Ziks Drive UNN</p>
+                  <p>dreamville@gmail.com</p>
+                </div>
               </div>
             </div>
           </main>
         </div>
-        <div className="footer-contents mt-4 text-right">
+        <div className="footer-contents mt-4 text-right mb-8 px-4">
           <button className="mr-4 bg-[_#fff] w-[_45px] h-[_45px]  rounded-[_50%] text-center p-3">
             <Link href="/dashboard" className="inline-block">
               <svg
@@ -412,7 +321,7 @@ function Dashboard() {
             </Link>
           </button>
           <button className="text-center rounded-lg bg-[_#2956c9] p-[_0.4rem] text-[_#fff] w-[_99px]">
-            Export
+            Edit
           </button>
         </div>
       </section>
@@ -420,4 +329,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Settings;
