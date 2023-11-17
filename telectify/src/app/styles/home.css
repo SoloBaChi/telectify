@@ -128,7 +128,7 @@
   }
   .home-cta {
     margin-top: -10rem;
-    margin-bottom: -2rem;
+    margin-bottom: 0rem;
     margin-left: 15rem;
     transition: 0.3s ease-in;
   }
