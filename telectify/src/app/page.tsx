@@ -8,14 +8,33 @@ export default function Home() {
       <div className=" p-4">
         <nav className=" h-16 w-screen bg-white flex items-center justify-between border-b-2">
           <h3 className="ml-4 text-lg font-bold">Telectify</h3>
-          <div>
+          <div className="btn">
             <button className="home-button register">Register</button>
             <button className="home-button login">Login</button>
           </div>
         </nav>
-        <div className="home-banner h-40 w-screen"></div>
-        <Wave />
-        <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex p-4">
+        <div className="banner-container">
+          <div className="home-banner w-screen">
+            <Image
+              src="/home/image2.jpg"
+              alt="image2"
+              height={1000}
+              width={1000}
+              className="home-banner-image"
+            />
+            <div className="banner-text">
+              Telectify is a cutting-edge real-time energy monitoring
+              application designed to empower individuals and businesses with
+              unprecedented insights into their energy consumption. Our platform
+              leverages state-of-the-art technology to provide users with a
+              comprehensive view of their energy usage, enabling smarter
+              decision-making, cost savings, and a more sustainable approach to
+              energy management.
+            </div>
+          </div>
+          <Wave />
+        </div>
+        <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex p-4 home-cta">
           <Link
             href="/signup"
             rel="noopener noreferrer"
@@ -25,19 +44,14 @@ export default function Home() {
             <code className="font-mono font-bold">Telectify</code>
           </Link>
         </div>
-        <div className="justify-center lg:p-4">
+        {/* <div className="justify-center lg:p-4">
           <h3 className="mb-3 text-2xl font-bold text-center lg:text-left mt-8">
             Know more about us
           </h3>
           <p>
-            Telectify is a cutting-edge real-time energy monitoring application
-            designed to empower individuals and businesses with unprecedented
-            insights into their energy consumption. Our platform leverages
-            state-of-the-art technology to provide users with a comprehensive
-            view of their energy usage, enabling smarter decision-making, cost
-            savings, and a more sustainable approach to energy management.
+            
           </p>
-        </div>
+        </div> */}
         <section className="features mb-32">
           <h3 className="mb-4 text-2xl font-bold text-center lg:text-left mt-8 border-b-4 border-red-800">
             Key Features
