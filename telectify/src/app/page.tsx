@@ -1,28 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import Wave from "./components/wave";
+import Nav from "./components/nav";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between ">
       <div className=" p-4">
-        <nav className=" h-16 w-screen bg-white flex items-center justify-between border-b-2">
-          <Image
-            src="/home/telectify.png"
-            alt="logo"
-            width={40}
-            height={40}
-            className="ml-4"
-          />
-          <div className="btn">
-            <Link href="/signup">
-              <button className="home-button register">Register</button>
-            </Link>
-            <Link href="/login">
-              <button className="home-button login">Login</button>
-            </Link>
-          </div>
-        </nav>
+        <Nav />
         <div className="banner-container">
           <div className="home-banner w-screen">
             <Image
@@ -64,7 +49,7 @@ export default function Home() {
         </div> */}
         <div className="border-b-4 border-blue-100"></div>
         <section className="features mb-32 home-features">
-          <h3 className="mb-4 text-2xl font-bold text-center lg:text-left mt-8 ">
+          <h3 className="mb-4 text-2xl font-bold text-center mt-8">
             Key Features
           </h3>
           <div className="features-container">
@@ -123,9 +108,7 @@ export default function Home() {
         <div className="border-b-4 border-blue-100 mb-10"></div>
 
         <section className="why-us home-why-us">
-          <h3 className="mb-4 text-2xl text-center lg:text-left font-bold">
-            Why Telectify
-          </h3>
+          <h3 className="mb-4 text-2xl text-center font-bold">Why Telectify</h3>
           <Image
             src="/home/image1.png"
             alt="why-us-image"

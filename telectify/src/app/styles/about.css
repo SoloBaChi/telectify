@@ -1,6 +1,13 @@
 .home-why-us {
   position: relative;
   margin-top: 0rem;
+  /* padding: 0rem 5rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 3rem; */
+  overflow-y: hidden;
 }
 .why-us-image {
   position: absolute;
