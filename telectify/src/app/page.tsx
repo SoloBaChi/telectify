@@ -10,13 +10,13 @@ export default function Home() {
         <Nav />
         <div className="banner-container">
           <div className="home-banner w-screen">
-            {/* <Image
+            <Image
               src="/home/image2.jpg"
               alt="image2"
               height={1000}
               width={1000}
               className="home-banner-image"
-            /> */}
+            />
             <div className="banner-text">
               Telectify is a cutting-edge real-time energy monitoring
               application designed to empower individuals and businesses with
