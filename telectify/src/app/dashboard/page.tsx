@@ -12,7 +12,7 @@ function Dashboard() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="h-screen py-4 lg:px-8 bg-[_#f2f2f2]">
+    <section className="h-screen  bg-[_#f2f2f2]">
       <nav className=" h-16 w-screen bg-white flex items-center justify-between border-b-2">
         <Link href="/">
           <Image
