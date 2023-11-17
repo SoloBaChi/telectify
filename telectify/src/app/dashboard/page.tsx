@@ -7,6 +7,7 @@ import BarChart2 from "../components/barChart2";
 import { useState } from "react";
 // import { GiHamburger } from "react-icons/gi";
 import { FaHamburger } from "react-icons/fa";
+import { FiMenu } from "react-icons/fi";
 
 function Dashboard() {
   const [open, setOpen] = useState(false);
@@ -23,7 +24,7 @@ function Dashboard() {
             className="ml-4"
           />
         </Link>
-        <FaHamburger
+        <FiMenu
           onClick={() => setOpen((prev) => !prev)}
           style={{ color: "black", marginRight: "1rem" }}
         />
