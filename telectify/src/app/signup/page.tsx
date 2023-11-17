@@ -24,7 +24,7 @@ export default function Signup() {
                 type="text"
                 placeholder="Apartment Name"
                 id="apartment"
-                className="bg-gray-50 border border-gray-300 text-white-900 rounded-lg w-full p-2.5 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-white-900 rounded-lg w-full p-2.5 focus:outline-none focus:ring-blue-500 focus:border-blue-500 placeholder:text-sm"
               />
             </div>
             <div className="form-field mb-8">
@@ -38,7 +38,7 @@ export default function Signup() {
                 type="text"
                 placeholder="N0 1 ziks drive"
                 id="address"
-                className="bg-gray-50 border border-gray-300 text-white-900 rounded-lg w-full p-2.5 focus:outline-none focus:ring-blue-500 focus:border-blue-500 "
+                className="bg-gray-50 border border-gray-300 text-white-900 rounded-lg w-full p-2.5 focus:outline-none focus:ring-blue-500 focus: placeholder:text-sm "
               />
             </div>
             <div className="form-field mb-8">
@@ -52,7 +52,7 @@ export default function Signup() {
                 type="email"
                 placeholder="@yahoo.com"
                 id="email"
-                className="bg-gray-50 border border-gray-300 text-white-900 rounded-lg w-full p-2.5 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-white-900 rounded-lg w-full p-2.5 focus:outline-none focus:ring-blue-500 focus: placeholder:text-sm"
               />
             </div>
             <div className="form-field">

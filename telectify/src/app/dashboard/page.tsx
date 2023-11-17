@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import BarChart from "../components/barChart";
+import BarChart2 from "../components/barChart2";
 
 function Dashboard() {
   return (
@@ -225,26 +227,30 @@ function Dashboard() {
               <div className="card-row grid grid-cols-12 gap-4">
                 <figure className="col-span-2 lg:col-span-3">
                   <span className="high h-9 block p-2 mb-2 bg-[_#2956c9] rounded-[_4px]"></span>
-                  <p className="text-center">800kwh</p>
+                  <p className="text-center">60kwh</p>
                   <p className="text-center">High</p>
                 </figure>
                 <figure className="col-span-2 lg:col-span-3">
                   <span className="mid h-9 block p-2 mb-2 bg-[_#bab01b] rounded-[_4px]"></span>
-                  <p className="text-center">620kwh</p>
+                  <p className="text-center">30kwh</p>
                   <p className="text-center">Mid</p>
                 </figure>
                 <figure className="col-span-2 lg:col-span-3 ">
                   <span className="low h-9 block p-2 mb-2 bg-[_#9c9b95] rounded-[_4px]"></span>
-                  <p className="text-center">320kwh</p>
+                  <p className="text-center">10kwh</p>
                   <p className="text-center">Normal</p>
                 </figure>
               </div>
             </figure>
           </div>
 
-          <div className="main-body h-60 bg-[_#fff] p-4 rounded-md">
-            <h3 className="text-sm font-semibold pl-24">
+          <div className="main-body h-60 bg-[_#fff] rounded-md barchart-container">
+            <h3 className="text-sm font-semibold pl-2">
               No 23 Ziks Drive UNN
+              <div className="bar-sub">
+                <BarChart />
+                <BarChart2 />
+              </div>
             </h3>
           </div>
         </main>
