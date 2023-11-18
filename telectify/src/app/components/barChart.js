@@ -1,9 +1,12 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import { Chart } from "chart.js/auto";
+import { FaInfoCircle } from "react-icons/fa";
 
 export default function BarChart() {
   const chartRef = useRef(null);
+  const [info, setInfo] = useState(false);
+  const [sum, setSum] = useState(0);
 
   const [mainData, setMainData] = useState([]);
   useEffect(() => {
@@ -25,11 +28,6 @@ export default function BarChart() {
     }
     fetchData();
   }, []);
-  console.log(mainData);
-  const tenant1 = mainData.map((items) => items.field7);
-  const tenant2 = mainData.map((items) => items.field8);
-  console.log(tenant1);
-  console.log(tenant2);
 
   useEffect(() => {
     if (chartRef.current) {
@@ -42,6 +40,11 @@ export default function BarChart() {
       //   const label = mainData.map((items) => items.field7 );
       const data = mainData.map((items) => items.field7 / 1000);
 
+      let arraySum = data.reduce(function (accumulator, currentValue) {
+        return accumulator + currentValue;
+      }, 0);
+
+      setSum(arraySum);
       const newChart = new Chart(context, {
         type: "bar",
         data: {
@@ -107,8 +110,20 @@ export default function BarChart() {
   }
   return (
     <div style={{ position: "relative", width: "98vw", height: "35vh" }}>
-      <p className=" text-center">Tenant 1</p>
+      {info && (
+        <div className="bar-info p-4">
+          This is the energy consumed starting from the most recent reset or
+          credit purchase
+        </div>
+      )}
 
+      <p className=" text-center flex items-center">
+        Tenant 1: {sum}kwh
+        <FaInfoCircle
+          className="ml-2"
+          onClick={() => setInfo((prev) => !prev)}
+        />
+      </p>
       <canvas ref={chartRef} />
       {/* <button
         onClick={handleDownload}
