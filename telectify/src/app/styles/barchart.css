@@ -1,5 +1,5 @@
 .barchart-container {
-  height: 45rem;
+  height: 46rem;
   overflow-y: hidden;
 }
 .bar-sub {
@@ -8,4 +8,12 @@
 }
 .bar-sub div {
   margin: 0 1rem;
+  overflow-y: hidden;
+}
+
+@media screen and (width < 768px) {
+  .bar-sub {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
 }
