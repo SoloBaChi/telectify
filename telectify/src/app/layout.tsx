@@ -5,6 +5,7 @@ import "./styles/home.css";
 import "./styles/features.css";
 import "./styles/about.css";
 import "./styles/barchart.css";
+import "./styles/next-pay.css";
 
 export const metadata: Metadata = {
   title: "Telectify",
