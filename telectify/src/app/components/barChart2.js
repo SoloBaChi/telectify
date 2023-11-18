@@ -2,7 +2,7 @@
 import { useRef, useEffect, useState } from "react";
 import { Chart } from "chart.js/auto";
 
-export default function BarChart() {
+export default function BarChart2() {
   const chartRef = useRef(null);
 
   const [mainData, setMainData] = useState([]);
@@ -40,36 +40,50 @@ export default function BarChart() {
       const context = chartRef.current.getContext("2d");
 
       //   const label = mainData.map((items) => items.field7 );
-      const data = mainData.map((items) => items.field7 / 1000);
+      const data = mainData.map((items) => items.field8 / 1000);
 
       const newChart = new Chart(context, {
         type: "bar",
         data: {
-          labels: ["12/11", "13/11", "14/11", "15/11"],
+          labels: [
+            "10/11",
+            "11/11",
+            "12/11",
+            "13/11",
+            "14/11",
+            "16/11",
+            "17/11",
+            "18/11",
+          ],
           datasets: [
             {
-              // barPercentage: 0.9,
-              // barThickness: 50,
-              label: "Tenant 2",
+              barPercentage: 0.2,
+              barThickness: 20,
+              label: "Tenant 1",
               data: data,
               backgroundColor: ["gray"],
-
-              borderWidth: 1,
-              borderRadius: 10,
+              borderWidth: 0.8,
+              borderRadius: 4,
             },
           ],
         },
         options: {
-          layout: {
-            padding: 40,
+          plugins: {
+            legend: {
+              display: false,
+            },
           },
+
           // responsive: true
           scales: {
             x: {
               type: "category",
+              grid: {
+                display: false,
+              },
             },
             y: {
-              beginAtZero: true,
+              display: false,
             },
           },
         },
@@ -89,14 +103,16 @@ export default function BarChart() {
     }
   }
   return (
-    <div style={{ position: "relative", width: "80vw", height: "68vh" }}>
+    <div style={{ position: "relative", width: "98vw", height: "35vh" }}>
+      <p className=" text-center">Tenant 2</p>
+
       <canvas ref={chartRef} />
-      <button
+      {/* <button
         onClick={handleDownload}
         className="rounded-md bg-amber-600 bg-opacity-25 p-3 m-4 border border-amber-800"
       >
         Download Chart
-      </button>
+      </button> */}
     </div>
   );
 }

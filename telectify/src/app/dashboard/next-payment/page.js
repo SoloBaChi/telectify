@@ -455,7 +455,7 @@ function Dashboard() {
                 <div className="pay-input-container">
                   <div>
                     <input
-                      className=" border border-black placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-96"
+                      className=" border border-black text-center placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-96"
                       placeholder="Energy Consumed By Tenant 1(kwh)"
                       value={energy1}
                       name="total"
@@ -468,7 +468,7 @@ function Dashboard() {
 
                   <div>
                     <input
-                      className=" border border-black placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-96"
+                      className=" border border-black text-center placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-96"
                       placeholder="Energy Consumed By Tenant 2(kwh)"
                       value={energy2}
                       name="total"
@@ -480,7 +480,7 @@ function Dashboard() {
                   </div>
                   <div>
                     <input
-                      className=" border border-black placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-96"
+                      className=" border border-black text-center placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-96"
                       placeholder="Amount You Want To Buy Next(Naira)"
                       value={amount}
                       name="total"

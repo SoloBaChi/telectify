@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import NotificationIcon from "../dashboardComponents/page";
+import BarChart from "../components/barChart";
+import BarChart2 from "../components/barChart2";
 
 function Dashboard() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -478,9 +480,13 @@ function Dashboard() {
               </figure>
             </div>
 
-            <div className="main-body bg-[_#fff] p-4 rounded-md">
-              <h3 className="text-sm font-semibold pl-24">
+            <div className="main-body bg-[_#fff] p-2 rounded-md">
+              <h3 className="text-sm font-semibold pl-0">
                 No 23 Ziks Drive UNN
+                <div className="bar-sub">
+                  <BarChart />
+                  <BarChart2 />
+                </div>
               </h3>
             </div>
           </main>
