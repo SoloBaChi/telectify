@@ -40,9 +40,12 @@ function Login() {
               />
             </div>
             <div className="form-field">
-              <button className="text-center bg-blue-600 rounded-lg text-white w-full block pb-2 pt-2">
-                Login
-              </button>
+              <Link href="/dashboard">
+                {" "}
+                <button className="text-center bg-blue-600 rounded-lg text-white w-full block pb-2 pt-2">
+                  Login
+                </button>
+              </Link>
             </div>
             <p className="text-center text-sm font-semibold mt-4">
               Do not have an account{" "}
