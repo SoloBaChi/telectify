@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between ">
+    <main className="flex min-h-screen flex-col items-center justify-between p-4">
       <nav className=" h-20 w-screen bg-white flex items-center border-b-2">
         <h3 className="ml-3 text-lg font-bold">Telectify</h3>
       </nav>
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex p-4">
+      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <Link
           href="/signup"
           rel="noopener noreferrer"
