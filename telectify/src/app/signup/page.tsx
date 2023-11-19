@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import Wave from "./components/wave";
-import Nav from "./components/nav";
+import Wave from "../components/wave";
+import Nav from "../components/nav";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between ">
