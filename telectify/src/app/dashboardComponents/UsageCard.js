@@ -1,7 +1,7 @@
 export default function Usage() {
   return (
     <div className="main-header grid lg:grid-cols-12 gap-4 mb-6">
-      <figure className="col-span-6 card rounded-[_10px] bg-[_#fff] p-24">
+      <figure className="col-span-6 card rounded-[_10px] bg-[_#fff] p-4">
         <h3 className="text-md text-[_#25672F] font-[_800] pb-2">
           Monthly Power Usage
         </h3>
@@ -25,7 +25,7 @@ export default function Usage() {
       </figure>
 
       {/* col-2 */}
-      <figure className="col-span-6 card rounded-[_10px] bg-[_#fff] p-24">
+      <figure className="col-span-6 card rounded-[_10px] bg-[_#fff] p-4">
         <h3 className="text-md text-[_#25672F] font-[_800] pb-2">
           Daily Power Usage
         </h3>
