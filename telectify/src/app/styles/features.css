@@ -33,7 +33,7 @@
   border-radius: 2rem;
   margin: 2rem;
 }
-@media screen and (width < 768px) {
+@media screen and (max-width: 768px) {
   .features-container {
     flex-direction: column;
     padding: 0 1rem;

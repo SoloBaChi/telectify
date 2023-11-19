@@ -64,12 +64,15 @@
   margin-left: 15rem;
   transition: 0.3s ease-in;
 }
+.wave {
+  display: block;
+}
 
 .home-cta:hover {
   padding: 0.8rem;
 }
 
-@media screen and (width < 768px) {
+@media screen and (max-width: 768px) {
   .home-button {
     margin-right: 1.8rem;
     border-radius: 1rem;
@@ -132,7 +135,7 @@
   }
   .home-cta {
     margin-top: -10rem;
-    margin-bottom: 0rem;
+    margin-bottom: 2.5rem;
     margin-left: 15rem;
     transition: 0.3s ease-in;
   }
