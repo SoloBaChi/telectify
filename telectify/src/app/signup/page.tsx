@@ -5,7 +5,6 @@ import Nav from "../components/nav";
 export default function Signup() {
   return (
     <div className="min-h-screen bg-gray-300 border">
-      <Nav />
       <section className="w-4/5 lg:w-3/5 mx-auto">
         <form className="form-container">
           <h3 className="mb-3 text-2xl font-bold text-left mt-8">
