@@ -117,7 +117,7 @@ export default function BarChart() {
         </div>
       )}
 
-      <p className=" text-center flex items-center ml-6">
+      <p className=" text-center flex items-center ml-10">
         Tenant 1: {sum}kwh
         <FaInfoCircle
           className="ml-2"
