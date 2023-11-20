@@ -11,9 +11,14 @@ function Dashboard() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [user, setUser] = useState({});
   const [auth, setAuth] = useState(false);
+  const [toggleId, setTogleId] = useState(false);
 
   const handleToggle = () => {
     setToggleMenu((prev) => !prev);
+  };
+
+  const handleToggId = () => {
+    setTogleId((prev) => !prev);
   };
 
   useEffect(() => {
@@ -83,7 +88,13 @@ function Dashboard() {
                 />
               </div>
               <div>
-                <span className="caret-down hidden lg:block">Account</span>
+                <span
+                  onClick={handleToggId}
+                  className="caret-down hidden lg:block"
+                >
+                  Account
+                </span>
+                {toggleId && <span>{user.nameOfApartment}</span>}
               </div>
             </div>
           </header>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { IoNotificationsOutline } from "react-icons/io5";
@@ -8,10 +8,43 @@ import { FaCalculator } from "react-icons/fa6";
 
 function Settings() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [user, setUser] = useState({});
 
   const handleToggle = () => {
     setToggleMenu((prev) => !prev);
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("myToken");
+
+    if (token) {
+      userProfile(token);
+    }
+  }, []);
+
+  const userProfile = async (token) => {
+    try {
+      const url = `https://telectify-api.vercel.app/api/v1/tenant/profile`;
+      const options = {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+
+      const res = await fetch(url, options);
+      const result = await res.json();
+
+      const data = await result.data;
+      console.log(data);
+
+      // update the user state
+      setUser(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <header className="flex flex-row items-center justify-between py-4  px-4 lg:px-10">
@@ -224,7 +257,7 @@ function Settings() {
               </div>
 
               <h3 className="text-sm text-center mb-8 font-semibold">
-                No 23 Ziks Drive UNN
+                {user.houseAddress}
               </h3>
               <div className="apartment-details flex flex-row flex-nowrap gap-4 justify-center items-end sm:items-start lg:gap-32">
                 <div className="item-properties">
@@ -233,9 +266,9 @@ function Settings() {
                   <h4>Email</h4>
                 </div>
                 <div className="item-values">
-                  <p>Dreamville</p>
-                  <p>No 1 Ziks Drive UNN</p>
-                  <p>dreamville@gmail.com</p>
+                  <p>{user.nameOfApartment}</p>
+                  <p>{user.houseAddress}</p>
+                  <p>{user.email}</p>
                 </div>
               </div>
 
