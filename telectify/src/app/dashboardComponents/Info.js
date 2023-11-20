@@ -9,7 +9,6 @@ export default function Info() {
 
       <div className="main-body bg-[_#fff] p-2 rounded-md">
         <h3 className="text-sm font-semibold pl-0">
-          No 23 Ziks Drive UNN
           <div className="bar-sub">
             <BarChart />
             <BarChart2 />

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import NotificationIcon from "../dashboardComponents/page";
@@ -9,20 +9,51 @@ import Info from "../dashboardComponents/Info";
 
 function Dashboard() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [user, setUser] = useState({});
 
   const handleToggle = () => {
     setToggleMenu((prev) => !prev);
+  };
+
+  // Get the bearer token
+  const token = localStorage.getItem("myToken");
+
+  useEffect(() => {
+    userProfile();
+  }, [setUser]);
+
+  const userProfile = async () => {
+    try {
+      const url = `https://telectify-api.vercel.app/api/v1/tenant/profile`;
+      const options = {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
+
+      const res = await fetch(url, options);
+      const result = await res.json();
+
+      const data = await result.data;
+      console.log(data);
+
+      // update the user state
+      await setUser(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
     <>
       <header className="flex flex-row items-center justify-between py-4  px-4 lg:px-10">
         <div className="item-one">
-          <Link href="/">
+          <Link href="/dashboard">
             <Image
               src="/assets/images/telectify-logo.svg"
               alt="telectify logo"
-              width={65}
+              width={45}
               height={45}
               priority
             />
@@ -50,6 +81,12 @@ function Dashboard() {
         </div>
       </header>
       <section className="py-4 px-4 lg:px-8 bg-[_#f2f2f2]">
+        <h3 className="text-sm font-semibold pl-0">
+          House Address: {user.houseAddress}
+        </h3>
+        <h3 className="text-sm font-semibold pl-0">
+          Name of Apartment: {user.nameOfApartment}
+        </h3>
         <div className="h-full grid-container grid lg:grid-cols-12 gap-4">
           <aside className="h-full bg-[_#fff] lg:col-span-3 sidebar rounded-md pt-8 p-4 hidden lg:block">
             <Link href="/dashboard" className="mb-[_16px] block p-[_0.5rem]">
@@ -404,10 +441,11 @@ function Dashboard() {
               </Link>
             </aside>
           )}
+
           <Info />
         </div>
         <div className="footer-contents mt-4 px-4 mb-8 text-right">
-          <button className="mr-4 bg-[_#fff] w-[_45px] h-[_45px] rounded-[_50%] text-center p-3">
+          <button className="mr-4 bg-[_#fff] w-[_45px] h-[_45px] rounded-[_50%] text-center p-2">
             <Link href="/dashboard" className="inline-block">
               <svg
                 width="19"

@@ -25,11 +25,11 @@ function Dashboard() {
     <>
       <header className="flex flex-row items-center justify-between py-4  px-4 lg:px-10">
         <div className="item-one">
-          <Link href="/">
+          <Link href="/dashboard">
             <Image
               src="/assets/images/telectify-logo.svg"
               alt="telectify logo"
-              width={65}
+              width={45}
               height={45}
               priority
             />
@@ -379,7 +379,7 @@ function Dashboard() {
                 <div className="pay-input-container">
                   <div>
                     <input
-                      className=" border border-black text-center placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-96"
+                      className=" border border-black text-center placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-50 md:w-96"
                       placeholder="Energy Consumed By Tenant 1(kwh)"
                       value={energy1}
                       name="total"
@@ -392,7 +392,7 @@ function Dashboard() {
 
                   <div>
                     <input
-                      className=" border border-black text-center placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-96"
+                      className=" border border-black text-center placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-50 md:w-96"
                       placeholder="Energy Consumed By Tenant 2(kwh)"
                       value={energy2}
                       name="total"
@@ -404,7 +404,7 @@ function Dashboard() {
                   </div>
                   <div>
                     <input
-                      className=" border border-black text-center placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-96"
+                      className=" border border-black text-center placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-50 md:w-96"
                       placeholder="Amount You Want To Buy Next(Naira)"
                       value={amount}
                       name="total"
@@ -435,7 +435,7 @@ function Dashboard() {
           </main>
         </div>
         <div className="footer-contents mt-4 px-4 mb-8 text-right">
-          <button className="mr-4 bg-[_#fff] w-[_45px] h-[_45px] rounded-[_50%] text-center p-3">
+          <button className="mr-4 bg-[_#fff] w-[_45px] h-[_45px] rounded-[_50%] text-center p-2">
             <Link href="/dashboard" className="inline-block">
               <svg
                 width="19"

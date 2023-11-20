@@ -9,7 +9,7 @@ export default function Nav() {
         <Image
           src="/home/telectify.png"
           alt="logo"
-          width={65}
+          width={45}
           height={45}
           className="ml-4"
         />

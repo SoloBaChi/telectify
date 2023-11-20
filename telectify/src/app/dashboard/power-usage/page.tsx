@@ -1,63 +1,38 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Usage from "../../dashboardComponents/Usage";
+import NotificationIcon from "../../dashboardComponents/page";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { FaCalculator } from "react-icons/fa6";
 
 function Dashboard() {
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const handleToggle = () => {
+    setToggleMenu((prev) => !prev);
+  };
   return (
     <>
       <header className="flex flex-row items-center justify-between py-4  px-4 lg:px-10">
         <div className="item-one">
-          <Link href="/">
+          <Link href="/dashboard">
             <Image
               src="/assets/images/telectify-logo.svg"
               alt="telectify logo"
-              width={65}
+              width={45}
               height={45}
               priority
             />
           </Link>
         </div>
         <div className="item-two flex flex-row gap-2 items-center">
+          <div className="toggle-btn lg:hidden" onClick={handleToggle}>
+            <span className="toggle-icon">&#9776;</span>
+          </div>
           <div>
-            <span className="notification-icon">
-              <svg
-                width="33"
-                height="33"
-                viewBox="0 0 33 33"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.5276 4.00125C11.9763 4.00125 8.27756 7.7 8.27756 12.2513V16.225C8.27756 17.0638 7.92006 18.3425 7.49381 19.0575L5.91256 21.6838C4.93631 23.3063 5.61006 25.1075 7.39756 25.7125C13.3238 27.6925 19.7176 27.6925 25.6438 25.7125C27.3076 25.1625 28.0363 23.1963 27.1288 21.6838L25.5476 19.0575C25.1351 18.3425 24.7776 17.0638 24.7776 16.225V12.2513C24.7776 7.71375 21.0651 4.00125 16.5276 4.00125Z"
-                  stroke="#1E1E1E"
-                  stroke-width="1.5"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M19.0711 4.40001C18.6449 4.27626 18.2049 4.18001 17.7511 4.12501C16.4311 3.96001 15.1661 4.05626 13.9836 4.40001C14.3824 3.38251 15.3724 2.66751 16.5274 2.66751C17.6824 2.66751 18.6724 3.38251 19.0711 4.40001Z"
-                  stroke="#1E1E1E"
-                  stroke-width="1.5"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M20.6526 26.2075C20.6526 28.4762 18.7963 30.3325 16.5276 30.3325C15.4001 30.3325 14.3551 29.865 13.6126 29.1225C12.8701 28.38 12.4026 27.335 12.4026 26.2075"
-                  stroke="#1E1E1E"
-                  stroke-width="1.5"
-                  stroke-miterlimit="10"
-                />
-                <circle cx="24" cy="9" r="7" fill="#E41616" />
-                <path
-                  d="M21.65 7.775C21.6967 7.44833 21.7867 7.16 21.92 6.91C22.0533 6.65667 22.2217 6.445 22.425 6.275C22.6317 6.105 22.8667 5.97667 23.13 5.89C23.3967 5.8 23.6833 5.755 23.99 5.755C24.2933 5.755 24.5733 5.79833 24.83 5.885C25.0867 5.97167 25.3067 6.095 25.49 6.255C25.6767 6.415 25.8217 6.60833 25.925 6.835C26.0283 7.06167 26.08 7.31333 26.08 7.59C26.08 7.81667 26.05 8.02 25.99 8.2C25.9333 8.37667 25.85 8.53167 25.74 8.665C25.6333 8.79833 25.5033 8.91167 25.35 9.005C25.1967 9.09833 25.025 9.175 24.835 9.235C25.3017 9.355 25.6517 9.56167 25.885 9.855C26.1217 10.145 26.24 10.5083 26.24 10.945C26.24 11.275 26.1767 11.5717 26.05 11.835C25.9267 12.0983 25.7567 12.3233 25.54 12.51C25.3233 12.6933 25.07 12.835 24.78 12.935C24.4933 13.0317 24.185 13.08 23.855 13.08C23.475 13.08 23.15 13.0333 22.88 12.94C22.61 12.8433 22.3817 12.7117 22.195 12.545C22.0083 12.3783 21.855 12.1817 21.735 11.955C21.615 11.725 21.5133 11.4767 21.43 11.21L21.815 11.05C21.915 11.0067 22.0117 10.995 22.105 11.015C22.2017 11.035 22.2717 11.09 22.315 11.18C22.3583 11.2733 22.4117 11.385 22.475 11.515C22.5417 11.645 22.6317 11.77 22.745 11.89C22.8583 12.01 23.0017 12.1117 23.175 12.195C23.3517 12.2783 23.575 12.32 23.845 12.32C24.095 12.32 24.3133 12.28 24.5 12.2C24.69 12.1167 24.8467 12.01 24.97 11.88C25.0967 11.75 25.1917 11.605 25.255 11.445C25.3183 11.285 25.35 11.1267 25.35 10.97C25.35 10.7767 25.325 10.6 25.275 10.44C25.225 10.28 25.1317 10.1417 24.995 10.025C24.8583 9.90833 24.67 9.81667 24.43 9.75C24.1933 9.68333 23.8883 9.65 23.515 9.65V9.005C23.8217 9.00167 24.0817 8.96833 24.295 8.905C24.5117 8.84167 24.6867 8.755 24.82 8.645C24.9567 8.535 25.055 8.40333 25.115 8.25C25.1783 8.09667 25.21 7.92667 25.21 7.74C25.21 7.53333 25.1767 7.35333 25.11 7.2C25.0467 7.04667 24.9583 6.92 24.845 6.82C24.7317 6.72 24.5967 6.645 24.44 6.595C24.2867 6.545 24.12 6.52 23.94 6.52C23.76 6.52 23.5917 6.54667 23.435 6.6C23.2817 6.65333 23.145 6.72833 23.025 6.825C22.9083 6.91833 22.81 7.03 22.73 7.16C22.65 7.29 22.5933 7.43333 22.56 7.59C22.5167 7.70667 22.4617 7.785 22.395 7.825C22.3317 7.86167 22.2383 7.87167 22.115 7.855L21.65 7.775Z"
-                  fill="white"
-                />
-              </svg>
-            </span>
+            <NotificationIcon />
           </div>
           <div>
             <Image
@@ -68,8 +43,8 @@ function Dashboard() {
               priority
             />
           </div>
-          <div className="hidden lg:block">
-            <span className="caret-down">Account</span>
+          <div>
+            <span className="caret-down hidden lg:block">Account</span>
           </div>
         </div>
       </header>
@@ -240,7 +215,7 @@ function Dashboard() {
           <Usage />
         </div>
         <div className="footer-contents mt-4 text-right">
-          <button className="mr-4 bg-[_#fff] w-[_45px] h-[_45px]  rounded-[_50%] text-center p-3">
+          <button className="mr-4 bg-[_#fff] w-[_45px] h-[_45px]  rounded-[_50%] text-center p-2">
             <Link href="/dashboard" className="inline-block">
               <svg
                 width="19"

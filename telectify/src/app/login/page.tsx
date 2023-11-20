@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -10,12 +11,20 @@ function Login() {
 
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [userToken, setUserToken] = useState("");
   const [login, setLogin] = useState({
     houseAddress: "",
     uniqueId: "",
   });
 
-  const handleChange = (e) => {
+  // Hamdle user token
+  const getUserToken = (userData) => {
+    const token = userData.data.token;
+    setUserToken(token);
+  };
+
+  // Handle input change
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLogin((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -28,7 +37,7 @@ function Login() {
     setErrorMessage(error);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const data = {
@@ -57,6 +66,9 @@ function Login() {
       handleErrorMessage(resData);
       console.log(resData);
 
+      // update the user token
+      getUserToken(resData);
+
       setLogin((prev) => {
         return {
           ...prev,
@@ -75,8 +87,25 @@ function Login() {
       setLoading(false);
     }
   };
+
+  // store the  user token in local storage
+  localStorage.setItem("myToken", userToken);
+
   return (
     <div className="min-h-screen bg-gray-300 border">
+      <header className="w-4/5 lg:w-3/5 mx-auto py-4">
+        <div className="item-one">
+          <Link href="/">
+            <Image
+              src="/assets/images/telectify-logo.svg"
+              alt="telectify logo"
+              width={45}
+              height={45}
+              priority
+            />
+          </Link>
+        </div>
+      </header>
       <section className="w-4/5 lg:w-3/5 mx-auto">
         <form className="form-container" onSubmit={handleSubmit}>
           <h3 className="mb-3 text-2xl font-bold text-left mt-8">
