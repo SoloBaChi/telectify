@@ -39,19 +39,19 @@ export default function Home() {
           </Link>
         </div>
         <div className="border-b-4 border-blue-100"></div>
-        <section className="features mb-32 home-features">
+        <section className="features mb-32">
           <h3 className="mb-4 text-2xl font-bold text-center mt-8">
             Key Features
           </h3>
-          <div className="features-container">
+          <div className="features-container lg:flex flex-row items-center gap-4">
             <Image
               src="/home/image1.jpg"
               alt="image1"
-              height={1000}
-              width={1000}
+              height={100}
+              width={100}
               className="feature-image"
             />
-            <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:text-left feature-cards">
+            <div className="mb-32 grid text-center lg:w-full lg:mb-0 md:grid-cols-2 md:gap-4 lg:grid-cols-2 lg:text-left feature-cards">
               <figure className="card group rounded-lg border border-transparent-800 p-2 mb-4 transition-colors hover:text-white cursor-pointer background-blue">
                 <h4 className="mb-3 text-lg font-bold">Real-Time Monitoring</h4>
                 <p className="text-sm opacity-50">
@@ -151,4 +151,3 @@ export default function Home() {
     </main>
   );
 }
-
