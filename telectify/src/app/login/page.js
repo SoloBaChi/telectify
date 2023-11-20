@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -17,7 +17,7 @@ function Login() {
     uniqueId: "",
   });
 
-  // Hamdle user token
+  // Handle user token
   const getUserToken = (userData) => {
     const token = userData.data.token;
     setUserToken(token);
@@ -37,6 +37,13 @@ function Login() {
     setErrorMessage(error);
   };
 
+  useEffect(() => {
+    // Store the user token in local storage
+    if (userToken) {
+      localStorage.setItem("myToken", userToken);
+    }
+  }, [userToken]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,10 +52,10 @@ function Login() {
       uniqueId: login.uniqueId,
     };
 
-    // turn on loading action
+    // Turn on loading action
     setLoading(true);
 
-    // make a post request using fetch API
+    // Make a post request using fetch API
     try {
       const url = `https://telectify-api.vercel.app/auth/login`;
 
@@ -62,11 +69,11 @@ function Login() {
       const res = await fetch(url, params);
 
       const resData = await res.json();
-      // call handle error message
+      // Call handle error message
       handleErrorMessage(resData);
       console.log(resData);
 
-      // update the user token
+      // Update the user token
       getUserToken(resData);
 
       setLogin((prev) => {
@@ -76,20 +83,22 @@ function Login() {
         };
       });
 
-      // turn off the laoding action
+      // Turn off the loading action
       setLoading(false);
 
-      //catch any error
+      // Redirect to dashboard on successful login
+      if (resData.status === "success") {
+        router.push("/dashboard");
+      }
+
+      // Catch any error
     } catch (err) {
       console.log(err);
 
-      // turn off loading event
+      // Turn off loading event
       setLoading(false);
     }
   };
-
-  // store the  user token in local storage
-  localStorage.setItem("myToken", userToken);
 
   return (
     <div className="min-h-screen bg-gray-300 border">
