@@ -8,7 +8,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Signup() {
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [message, setMessage] = useState("");
   const [signup, setSignup] = useState({
     nameOfApartment: "",
     houseAddress: "",
@@ -24,9 +24,9 @@ export default function Signup() {
 
   // Handle error message
   // Handle error message
-  const handleErrorMessage = (err) => {
+  const handleMessage = (err) => {
     const error = err.message[0].msg || err.message;
-    setErrorMessage(error);
+    setMessage(error);
   };
 
   const handleSubmit = async (e) => {
@@ -56,7 +56,7 @@ export default function Signup() {
 
       const resData = await res.json();
       // call handle error message
-      handleErrorMessage(resData);
+      handleMessage(resData);
       console.log(resData);
 
       setSignup((prev) => {
@@ -153,14 +153,14 @@ export default function Signup() {
             {/* return error message*/}
             {signup.status === "success" ? (
               <span style={{ color: "green" }}>
-                Account created Successfully!
+                {message}
                 {""}
                 <Link href="/login" style={{ color: "blue", display: "block" }}>
                   Please Login to continue{" "}
                 </Link>
               </span>
             ) : (
-              <span style={{ color: "red" }}>{errorMessage}</span>
+              <span style={{ color: "red" }}>{message}</span>
             )}
 
             <div className="form-field">
