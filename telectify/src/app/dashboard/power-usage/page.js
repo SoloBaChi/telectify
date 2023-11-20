@@ -1,60 +1,38 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Usage from "../../dashboardComponents/Usage";
+import NotificationIcon from "../../dashboardComponents/page";
+import { IoNotificationsOutline } from "react-icons/io5";
+import { FaCalculator } from "react-icons/fa6";
 
 function Dashboard() {
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const handleToggle = () => {
+    setToggleMenu((prev) => !prev);
+  };
   return (
     <>
       <header className="flex flex-row items-center justify-between py-4  px-4 lg:px-10">
         <div className="item-one">
-          <Link href="/">
+          <Link href="/dashboard">
             <Image
               src="/assets/images/telectify-logo.svg"
               alt="telectify logo"
-              width={65}
+              width={45}
               height={45}
               priority
             />
           </Link>
         </div>
         <div className="item-two flex flex-row gap-2 items-center">
+          <div className="toggle-btn lg:hidden" onClick={handleToggle}>
+            <span className="toggle-icon">&#9776;</span>
+          </div>
           <div>
-            <span className="notification-icon">
-              <svg
-                width="33"
-                height="33"
-                viewBox="0 0 33 33"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.5276 4.00125C11.9763 4.00125 8.27756 7.7 8.27756 12.2513V16.225C8.27756 17.0638 7.92006 18.3425 7.49381 19.0575L5.91256 21.6838C4.93631 23.3063 5.61006 25.1075 7.39756 25.7125C13.3238 27.6925 19.7176 27.6925 25.6438 25.7125C27.3076 25.1625 28.0363 23.1963 27.1288 21.6838L25.5476 19.0575C25.1351 18.3425 24.7776 17.0638 24.7776 16.225V12.2513C24.7776 7.71375 21.0651 4.00125 16.5276 4.00125Z"
-                  stroke="#1E1E1E"
-                  stroke-width="1.5"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M19.0711 4.40001C18.6449 4.27626 18.2049 4.18001 17.7511 4.12501C16.4311 3.96001 15.1661 4.05626 13.9836 4.40001C14.3824 3.38251 15.3724 2.66751 16.5274 2.66751C17.6824 2.66751 18.6724 3.38251 19.0711 4.40001Z"
-                  stroke="#1E1E1E"
-                  stroke-width="1.5"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M20.6526 26.2075C20.6526 28.4762 18.7963 30.3325 16.5276 30.3325C15.4001 30.3325 14.3551 29.865 13.6126 29.1225C12.8701 28.38 12.4026 27.335 12.4026 26.2075"
-                  stroke="#1E1E1E"
-                  stroke-width="1.5"
-                  stroke-miterlimit="10"
-                />
-                <circle cx="24" cy="9" r="7" fill="#E41616" />
-                <path
-                  d="M21.65 7.775C21.6967 7.44833 21.7867 7.16 21.92 6.91C22.0533 6.65667 22.2217 6.445 22.425 6.275C22.6317 6.105 22.8667 5.97667 23.13 5.89C23.3967 5.8 23.6833 5.755 23.99 5.755C24.2933 5.755 24.5733 5.79833 24.83 5.885C25.0867 5.97167 25.3067 6.095 25.49 6.255C25.6767 6.415 25.8217 6.60833 25.925 6.835C26.0283 7.06167 26.08 7.31333 26.08 7.59C26.08 7.81667 26.05 8.02 25.99 8.2C25.9333 8.37667 25.85 8.53167 25.74 8.665C25.6333 8.79833 25.5033 8.91167 25.35 9.005C25.1967 9.09833 25.025 9.175 24.835 9.235C25.3017 9.355 25.6517 9.56167 25.885 9.855C26.1217 10.145 26.24 10.5083 26.24 10.945C26.24 11.275 26.1767 11.5717 26.05 11.835C25.9267 12.0983 25.7567 12.3233 25.54 12.51C25.3233 12.6933 25.07 12.835 24.78 12.935C24.4933 13.0317 24.185 13.08 23.855 13.08C23.475 13.08 23.15 13.0333 22.88 12.94C22.61 12.8433 22.3817 12.7117 22.195 12.545C22.0083 12.3783 21.855 12.1817 21.735 11.955C21.615 11.725 21.5133 11.4767 21.43 11.21L21.815 11.05C21.915 11.0067 22.0117 10.995 22.105 11.015C22.2017 11.035 22.2717 11.09 22.315 11.18C22.3583 11.2733 22.4117 11.385 22.475 11.515C22.5417 11.645 22.6317 11.77 22.745 11.89C22.8583 12.01 23.0017 12.1117 23.175 12.195C23.3517 12.2783 23.575 12.32 23.845 12.32C24.095 12.32 24.3133 12.28 24.5 12.2C24.69 12.1167 24.8467 12.01 24.97 11.88C25.0967 11.75 25.1917 11.605 25.255 11.445C25.3183 11.285 25.35 11.1267 25.35 10.97C25.35 10.7767 25.325 10.6 25.275 10.44C25.225 10.28 25.1317 10.1417 24.995 10.025C24.8583 9.90833 24.67 9.81667 24.43 9.75C24.1933 9.68333 23.8883 9.65 23.515 9.65V9.005C23.8217 9.00167 24.0817 8.96833 24.295 8.905C24.5117 8.84167 24.6867 8.755 24.82 8.645C24.9567 8.535 25.055 8.40333 25.115 8.25C25.1783 8.09667 25.21 7.92667 25.21 7.74C25.21 7.53333 25.1767 7.35333 25.11 7.2C25.0467 7.04667 24.9583 6.92 24.845 6.82C24.7317 6.72 24.5967 6.645 24.44 6.595C24.2867 6.545 24.12 6.52 23.94 6.52C23.76 6.52 23.5917 6.54667 23.435 6.6C23.2817 6.65333 23.145 6.72833 23.025 6.825C22.9083 6.91833 22.81 7.03 22.73 7.16C22.65 7.29 22.5933 7.43333 22.56 7.59C22.5167 7.70667 22.4617 7.785 22.395 7.825C22.3317 7.86167 22.2383 7.87167 22.115 7.855L21.65 7.775Z"
-                  fill="white"
-                />
-              </svg>
-            </span>
+            <NotificationIcon />
           </div>
           <div>
             <Image
@@ -65,8 +43,8 @@ function Dashboard() {
               priority
             />
           </div>
-          <div className="hidden lg:block">
-            <span className="caret-down">Account</span>
+          <div>
+            <span className="caret-down hidden lg:block">Account</span>
           </div>
         </div>
       </header>
@@ -104,7 +82,7 @@ function Dashboard() {
                 </p>
               </div>
             </Link>
-            <Link href="/dashboard" className="mb-[_16px] block p-[_0.5rem]">
+            {/* <Link href="/dashboard" className="mb-[_16px] block p-[_0.5rem]">
               <div className="aside-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
                 <svg
                   width="27"
@@ -124,24 +102,18 @@ function Dashboard() {
                   History Section
                 </p>
               </div>
-            </Link>
-            <Link href="/dashboard" className="mb-[_16px] block p-[_0.5rem]">
+            </Link> */}
+            <Link
+              href="/dashboard/next-payment"
+              className="mb-[_16px] block p-[_0.5rem]"
+            >
               <div className="aside-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
                 {/* <Image src="/assets/images/power-consumption-icon.svg"  alt='icon'width={25} height={25} priority className='icon'/> */}
-                <svg
-                  width="27"
-                  height="27"
-                  viewBox="0 0 27 27"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18.0113 7.875L18 4.5C18 3.88125 17.4937 3.375 16.875 3.375C16.2563 3.375 15.75 3.88125 15.75 4.5V7.875H11.25V4.5C11.25 3.88125 10.7438 3.375 10.125 3.375C9.50625 3.375 9 3.88125 9 4.5V7.875H8.98875C7.7625 7.875 6.75 8.8875 6.75 10.1137V15.3562C6.75 15.9525 6.98625 16.5263 7.4025 16.9425L10.6875 20.25V22.5C10.6875 23.1187 11.1937 23.625 11.8125 23.625H15.1875C15.8062 23.625 16.3125 23.1187 16.3125 22.5V20.25L19.5975 16.965C20.0138 16.5375 20.25 15.9637 20.25 15.3675V10.1137C20.25 8.87625 19.2488 7.875 18.0113 7.875Z"
-                    fill="#1E1E1E"
-                  />
-                </svg>
+                <FaCalculator
+                  style={{ fontSize: "1.4rem", marginLeft: "0.2rem" }}
+                />
                 <p className="text-md font-[_400] hover:font-[_600] hover:text-lg">
-                  Power Consumption
+                  Next Pay Calculator
                 </p>
               </div>
             </Link>
@@ -170,33 +142,12 @@ function Dashboard() {
                 </p>
               </div>
             </Link>
+
             <Link href="/dashboard" className="mb-[_16px] block p-[_0.5rem]">
               <div className="aside-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
-                <svg
-                  width="27"
-                  height="27"
-                  viewBox="0 0 27 27"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_38_5587)">
-                    <path
-                      d="M4.5 10.2075H10.2075V4.5H18V10.785H19.5V4.5C19.5 4.10218 19.342 3.72064 19.0607 3.43934C18.7794 3.15804 18.3978 3 18 3H8.1525L3 8.1525V22.5C3 22.8978 3.15804 23.2794 3.43934 23.5607C3.72064 23.842 4.10218 24 4.5 24H18C18.3978 24 18.7794 23.842 19.0607 23.5607C19.342 23.2794 19.5 22.8978 19.5 22.5H4.5V10.2075ZM4.5 8.7675L8.7675 4.5H9V9H4.5V8.7675Z"
-                      fill="black"
-                    />
-                    <path
-                      d="M21.24 12.2625C21.0965 12.1396 20.912 12.0754 20.7232 12.0827C20.5345 12.09 20.3554 12.1683 20.2218 12.3018C20.0883 12.4354 20.01 12.6144 20.0027 12.8032C19.9954 12.992 20.0596 13.1765 20.1825 13.32L22.62 15.75H13.5C13.3011 15.75 13.1103 15.829 12.9697 15.9697C12.829 16.1103 12.75 16.3011 12.75 16.5C12.75 16.6989 12.829 16.8897 12.9697 17.0303C13.1103 17.171 13.3011 17.25 13.5 17.25H22.6425L20.1825 19.71C20.104 19.7772 20.0402 19.86 19.9952 19.953C19.9502 20.0461 19.9249 20.1474 19.9209 20.2507C19.9169 20.354 19.9343 20.457 19.972 20.5532C20.0097 20.6495 20.0669 20.7369 20.14 20.81C20.2131 20.8831 20.3005 20.9403 20.3968 20.978C20.493 21.0157 20.596 21.0331 20.6993 21.0291C20.8026 21.0251 20.9039 20.9998 20.997 20.9548C21.09 20.9098 21.1728 20.846 21.24 20.7675L25.5 16.5L21.24 12.2625Z"
-                      fill="black"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_38_5587">
-                      <rect width="27" height="27" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
+                <IoNotificationsOutline style={{ fontSize: "1.7rem" }} />
                 <p className="text-md font-[_400] hover:font-[_600] hover:text-lg">
-                  Export Data
+                  Notification
                 </p>
               </div>
             </Link>
@@ -261,129 +212,10 @@ function Dashboard() {
               </div>
             </Link>
           </aside>
-          <main className="lg:col-span-9 main-contents rounded-md">
-            <div className="main-header grid lg:grid-cols-12 gap-4 mb-6">
-              <figure className="col-span-6 card rounded-[_10px] bg-[_#fff] p-4">
-                <h3 className="text-md text-[_#25672F] font-[_800] pb-2">
-                  Tenants Power Usage
-                </h3>
-                <div className="card-row grid grid-cols-12 gap-4">
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3">
-                    <span className="high h-9 block p-2 mb-2 bg-[_#2956c9] rounded-[_4px]"></span>
-                    <p className="text-center">60kwh</p>
-                    <p className="text-center">High</p>
-                  </figure>
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3">
-                    <span className="mid h-9 block p-2 mb-2 bg-[_#bab01b] rounded-[_4px]"></span>
-                    <p className="text-center">30kwh</p>
-                    <p className="text-center">Mid</p>
-                  </figure>
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3 ">
-                    <span className="low h-9 block p-2 mb-2 bg-[_#9c9b95] rounded-[_4px]"></span>
-                    <p className="text-center">10kwh</p>
-                    <p className="text-center">Normal</p>
-                  </figure>
-                </div>
-              </figure>
-
-              {/* col-2 */}
-              <figure className="col-span-6 card rounded-[_10px] bg-[_#fff] p-4">
-                <h3 className="text-md text-[_#25672F] font-[_800] pb-2">
-                  Daily Power Usage
-                </h3>
-                <div className="card-row grid grid-cols-12 gap-4">
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3">
-                    <span className="high h-9 block p-2 mb-2 bg-[_#2956c9] rounded-[_4px]"></span>
-                    <p className="text-center">800kwh</p>
-                    <p className="text-center">High</p>
-                  </figure>
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3">
-                    <span className="mid h-9 block p-2 mb-2 bg-[_#bab01b] rounded-[_4px]"></span>
-                    <p className="text-center">620kwh</p>
-                    <p className="text-center">Mid</p>
-                  </figure>
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3 ">
-                    <span className="low h-9 block p-2 mb-2 bg-[_#9c9b95] rounded-[_4px]"></span>
-                    <p className="text-center">320kwh</p>
-                    <p className="text-center">Normal</p>
-                  </figure>
-                </div>
-              </figure>
-            </div>
-
-            <div className="main-body bg-[_#fff] p-4 rounded-md">
-              <h3 className="text-sm font-semibold pl-24 mb-6">
-                No 23 Ziks Drive UNN
-              </h3>
-              <div className="table-container max-w-[_850px] overflow-auto lg:max-w-full lg:overflow-hidden">
-                <table className="table-auto w-[_1024px] md:w-full">
-                  <thead className="pb-4">
-                    <tr>
-                      <th>Solomon Chiakonam</th>
-                      <th>Amadi Emmmanuel</th>
-                      <th>Nwangwu Israel</th>
-                      <th>Chijioke Precious</th>
-                      <th>Duration</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>0.8kw/hr</td>
-                      <td>0.6kw/hr</td>
-                      <td>0.8kw/hr</td>
-                      <td>0.7kw/hr</td>
-                      <td>Now</td>
-                    </tr>
-                    <tr>
-                      <td>20kw/hr</td>
-                      <td>10kw/hr</td>
-                      <td>40kw/hr</td>
-                      <td>20kw/hr</td>
-                      <td>1hr ago</td>
-                    </tr>
-                    <tr>
-                      <td>40kw/hr</td>
-                      <td>30kw/hr</td>
-                      <td>60kw/hr</td>
-                      <td>50kw/hr</td>
-                      <td>2 hrs ago</td>
-                    </tr>
-                    <tr>
-                      <td>20kw/hr</td>
-                      <td>60kw/hr</td>
-                      <td>20kw/hr</td>
-                      <td>70kw/hr</td>
-                      <td>3 hrs ago</td>
-                    </tr>
-                    <tr>
-                      <td>70kw/hr</td>
-                      <td>70kw/hr</td>
-                      <td>30kw/hr</td>
-                      <td>40kw/hr</td>
-                      <td>4 hrs ago</td>
-                    </tr>
-                    <tr>
-                      <td>90kw/hr</td>
-                      <td>20kw/hr</td>
-                      <td>90kw/hr</td>
-                      <td>80kw/hr</td>
-                      <td>5 hrs ago</td>
-                    </tr>
-                    <tr>
-                      <td>30kw/hr</td>
-                      <td>45kw/hr</td>
-                      <td>50kw/hr</td>
-                      <td>25kw/hr</td>
-                      <td>6 hrs ago</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </main>
+          <Usage />
         </div>
         <div className="footer-contents mt-4 text-right">
-          <button className="mr-4 bg-[_#fff] w-[_45px] h-[_45px]  rounded-[_50%] text-center p-3">
+          <button className="mr-4 bg-[_#fff] w-[_45px] h-[_45px]  rounded-[_50%] text-center p-2">
             <Link href="/dashboard" className="inline-block">
               <svg
                 width="19"

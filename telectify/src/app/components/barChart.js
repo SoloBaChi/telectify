@@ -1,9 +1,12 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import { Chart } from "chart.js/auto";
+import { FaInfoCircle } from "react-icons/fa";
 
 export default function BarChart() {
   const chartRef = useRef(null);
+  const [info, setInfo] = useState(false);
+  const [sum, setSum] = useState(0);
 
   const [mainData, setMainData] = useState([]);
   useEffect(() => {
@@ -25,11 +28,6 @@ export default function BarChart() {
     }
     fetchData();
   }, []);
-  console.log(mainData);
-  const tenant1 = mainData.map((items) => items.field7);
-  const tenant2 = mainData.map((items) => items.field8);
-  console.log(tenant1);
-  console.log(tenant2);
 
   useEffect(() => {
     if (chartRef.current) {
@@ -40,35 +38,58 @@ export default function BarChart() {
       const context = chartRef.current.getContext("2d");
 
       //   const label = mainData.map((items) => items.field7 );
-      const data = mainData.map((items) => items.field8 / 1000);
+      const data = mainData.map((items) => items.field7 / 1000);
 
+      let arraySum = data.reduce(function (accumulator, currentValue) {
+        return accumulator + currentValue;
+      }, 0);
+
+      setSum(arraySum);
       const newChart = new Chart(context, {
         type: "bar",
         data: {
-          labels: ["12/11", "13/11", "14/11", "15/11"],
+          labels: [
+            "10/11",
+            "11/11",
+            "12/11",
+            "13/11",
+            "14/11",
+            "16/11",
+            "17/11",
+            "18/11",
+          ],
           datasets: [
             {
-              // barPercentage: 0.9,
-              // barThickness: 50,
+              barPercentage: 10,
+              barThickness: 20,
               label: "Tenant 1",
               data: data,
               backgroundColor: ["gray"],
-              borderWidth: 1,
-              borderRadius: 10,
+              borderWidth: 0.8,
+              borderRadius: 4,
             },
           ],
         },
         options: {
-          layout: {
-            padding: 40,
+          plugins: {
+            legend: {
+              display: false,
+            },
           },
+
           // responsive: true
           scales: {
             x: {
               type: "category",
+              grid: {
+                display: false,
+              },
             },
             y: {
               beginAtZero: true,
+              grid: {
+                display: false,
+              },
             },
           },
         },
@@ -88,14 +109,28 @@ export default function BarChart() {
     }
   }
   return (
-    <div style={{ position: "relative", width: "80vw", height: "68vh" }}>
+    <div style={{ position: "relative", width: "98vw", height: "35vh" }}>
+      {info && (
+        <div className="bar-info p-4">
+          This is the energy consumed starting from the most recent reset or
+          credit purchase
+        </div>
+      )}
+
+      <p className=" text-center flex items-center ml-10">
+        Tenant 1: {sum}kwh
+        <FaInfoCircle
+          className="ml-2"
+          onClick={() => setInfo((prev) => !prev)}
+        />
+      </p>
       <canvas ref={chartRef} />
-      <button
+      {/* <button
         onClick={handleDownload}
         className="rounded-md bg-amber-600 bg-opacity-25 p-3 m-4 border border-amber-800"
       >
         Download Chart
-      </button>
+      </button> */}
     </div>
   );
 }

@@ -2,24 +2,34 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import NotificationIcon from "../dashboardComponents/page";
+import NotificationIcon from "@/app/dashboardComponents/page";
+import { IoNotificationsOutline } from "react-icons/io5";
+import { FaCalculator } from "react-icons/fa6";
 
 function Dashboard() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [energy1, setEnergy1] = useState();
+  const [energy2, setEnergy2] = useState();
+  const [amount, setAmount] = useState();
 
+  const TotalEnergy = parseFloat(energy1) + parseFloat(energy2);
+  console.log(TotalEnergy);
   const handleToggle = () => {
     setToggleMenu((prev) => !prev);
   };
 
+  const ten1 = energy1 * 106 + (amount - TotalEnergy * 106) / 2;
+
+  const ten2 = energy2 * 106 + (amount - TotalEnergy * 106) / 2;
   return (
     <>
       <header className="flex flex-row items-center justify-between py-4  px-4 lg:px-10">
         <div className="item-one">
-          <Link href="/">
+          <Link href="/dashboard">
             <Image
               src="/assets/images/telectify-logo.svg"
               alt="telectify logo"
-              width={65}
+              width={45}
               height={45}
               priority
             />
@@ -80,44 +90,18 @@ function Dashboard() {
                 </p>
               </div>
             </Link>
-            <Link href="/dashboard" className="mb-[_16px] block p-[_0.5rem]">
-              <div className="aside-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
-                <svg
-                  width="27"
-                  height="27"
-                  viewBox="0 0 27 27"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M5.71388 5.70262C9.98326 1.43887 16.9245 1.48387 21.2198 5.78024C25.5173 10.0777 25.5623 17.0224 21.2918 21.2917C17.0224 25.5611 10.0778 25.5172 5.78026 21.2197C4.57144 20.0159 3.65811 18.5483 3.11195 16.9321C2.5658 15.3159 2.40169 13.5951 2.63251 11.9047C2.66279 11.6829 2.77996 11.4822 2.95824 11.3467C3.13651 11.2113 3.3613 11.1522 3.58313 11.1825C3.80497 11.2128 4.00569 11.3299 4.14114 11.5082C4.27659 11.6865 4.33567 11.9113 4.30538 12.1331C4.10945 13.5656 4.24835 15.024 4.71118 16.3937C5.174 17.7634 5.94813 19.0072 6.97276 20.0272C10.6234 23.6767 16.4993 23.6981 20.0993 20.0992C23.6981 16.4992 23.6768 10.6234 20.0273 6.97274C16.3789 3.32549 10.5064 3.30187 6.90638 6.89624L7.74788 6.89962C7.85869 6.90014 7.9683 6.92247 8.07047 6.96535C8.17264 7.00823 8.26537 7.07082 8.34335 7.14953C8.42133 7.22825 8.48305 7.32155 8.52498 7.42412C8.5669 7.52668 8.58821 7.6365 8.5877 7.74731C8.58718 7.85811 8.56484 7.96773 8.52196 8.0699C8.47908 8.17207 8.4165 8.26479 8.33778 8.34277C8.25907 8.42076 8.16576 8.48247 8.0632 8.5244C7.96063 8.56632 7.85081 8.58764 7.74001 8.58712L4.87576 8.57362C4.65335 8.57243 4.4404 8.48348 4.28323 8.3261C4.12606 8.16873 4.03739 7.95566 4.03651 7.73324L4.02188 4.87124C4.02129 4.76044 4.04253 4.65061 4.08439 4.54801C4.12624 4.44542 4.1879 4.35207 4.26583 4.2733C4.34376 4.19454 4.43644 4.13189 4.53859 4.08894C4.64073 4.04599 4.75033 4.02358 4.86113 4.02299C4.97194 4.0224 5.08177 4.04364 5.18436 4.0855C5.28696 4.12735 5.3803 4.18901 5.45907 4.26694C5.53784 4.34487 5.60049 4.43755 5.64343 4.5397C5.68638 4.64184 5.70879 4.75144 5.70938 4.86224L5.71388 5.70374V5.70262ZM13.4989 8.15512C13.7227 8.15512 13.9373 8.24401 14.0955 8.40225C14.2537 8.56048 14.3426 8.77509 14.3426 8.99887V13.1501L16.9088 15.7151C16.9894 15.7929 17.0537 15.886 17.098 15.9889C17.1422 16.0918 17.1656 16.2025 17.1666 16.3146C17.1676 16.4266 17.1463 16.5377 17.1039 16.6414C17.0616 16.7451 16.999 16.8394 16.9198 16.9186C16.8406 16.9979 16.7464 17.0606 16.6427 17.1031C16.5391 17.1455 16.428 17.1669 16.3159 17.166C16.2039 17.1651 16.0932 17.1419 15.9902 17.0977C15.8873 17.0535 15.7941 16.9893 15.7163 16.9087L12.6563 13.8487V8.99999C12.6563 8.77622 12.7452 8.56161 12.9034 8.40337C13.0616 8.24514 13.2762 8.15624 13.5 8.15624L13.4989 8.15512Z"
-                    fill="#1E1E1E"
-                  />
-                </svg>
-                <p className="text-md font-[_400] hover:font-[_600] hover:text-lg">
-                  History Section
-                </p>
-              </div>
-            </Link>
-            <Link href="/dashboard" className="mb-[_16px] block p-[_0.5rem]">
+
+            <Link
+              href="/dashboard/next-payment"
+              className="mb-[_16px] block p-[_0.5rem]"
+            >
               <div className="aside-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
                 {/* <Image src="/assets/images/power-consumption-icon.svg"  alt='icon'width={25} height={25} priority className='icon'/> */}
-                <svg
-                  width="27"
-                  height="27"
-                  viewBox="0 0 27 27"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18.0113 7.875L18 4.5C18 3.88125 17.4937 3.375 16.875 3.375C16.2563 3.375 15.75 3.88125 15.75 4.5V7.875H11.25V4.5C11.25 3.88125 10.7438 3.375 10.125 3.375C9.50625 3.375 9 3.88125 9 4.5V7.875H8.98875C7.7625 7.875 6.75 8.8875 6.75 10.1137V15.3562C6.75 15.9525 6.98625 16.5263 7.4025 16.9425L10.6875 20.25V22.5C10.6875 23.1187 11.1937 23.625 11.8125 23.625H15.1875C15.8062 23.625 16.3125 23.1187 16.3125 22.5V20.25L19.5975 16.965C20.0138 16.5375 20.25 15.9637 20.25 15.3675V10.1137C20.25 8.87625 19.2488 7.875 18.0113 7.875Z"
-                    fill="#1E1E1E"
-                  />
-                </svg>
+                <FaCalculator
+                  style={{ fontSize: "1.4rem", marginLeft: "0.2rem" }}
+                />
                 <p className="text-md font-[_400] hover:font-[_600] hover:text-lg">
-                  Power Consumption
+                  Next Pay Calculator
                 </p>
               </div>
             </Link>
@@ -148,31 +132,9 @@ function Dashboard() {
             </Link>
             <Link href="/dashboard" className="mb-[_16px] block p-[_0.5rem]">
               <div className="aside-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
-                <svg
-                  width="27"
-                  height="27"
-                  viewBox="0 0 27 27"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_38_5587)">
-                    <path
-                      d="M4.5 10.2075H10.2075V4.5H18V10.785H19.5V4.5C19.5 4.10218 19.342 3.72064 19.0607 3.43934C18.7794 3.15804 18.3978 3 18 3H8.1525L3 8.1525V22.5C3 22.8978 3.15804 23.2794 3.43934 23.5607C3.72064 23.842 4.10218 24 4.5 24H18C18.3978 24 18.7794 23.842 19.0607 23.5607C19.342 23.2794 19.5 22.8978 19.5 22.5H4.5V10.2075ZM4.5 8.7675L8.7675 4.5H9V9H4.5V8.7675Z"
-                      fill="black"
-                    />
-                    <path
-                      d="M21.24 12.2625C21.0965 12.1396 20.912 12.0754 20.7232 12.0827C20.5345 12.09 20.3554 12.1683 20.2218 12.3018C20.0883 12.4354 20.01 12.6144 20.0027 12.8032C19.9954 12.992 20.0596 13.1765 20.1825 13.32L22.62 15.75H13.5C13.3011 15.75 13.1103 15.829 12.9697 15.9697C12.829 16.1103 12.75 16.3011 12.75 16.5C12.75 16.6989 12.829 16.8897 12.9697 17.0303C13.1103 17.171 13.3011 17.25 13.5 17.25H22.6425L20.1825 19.71C20.104 19.7772 20.0402 19.86 19.9952 19.953C19.9502 20.0461 19.9249 20.1474 19.9209 20.2507C19.9169 20.354 19.9343 20.457 19.972 20.5532C20.0097 20.6495 20.0669 20.7369 20.14 20.81C20.2131 20.8831 20.3005 20.9403 20.3968 20.978C20.493 21.0157 20.596 21.0331 20.6993 21.0291C20.8026 21.0251 20.9039 20.9998 20.997 20.9548C21.09 20.9098 21.1728 20.846 21.24 20.7675L25.5 16.5L21.24 12.2625Z"
-                      fill="black"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_38_5587">
-                      <rect width="27" height="27" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
+                <IoNotificationsOutline style={{ fontSize: "1.7rem" }} />
                 <p className="text-md font-[_400] hover:font-[_600] hover:text-lg">
-                  Export Data
+                  Notification
                 </p>
               </div>
             </Link>
@@ -270,7 +232,7 @@ function Dashboard() {
                   </p>
                 </div>
               </Link>
-              <Link href="/dashboard" className="mb-[_16px] block p-[_0.5rem]">
+              {/* <Link href="/dashboard" className="mb-[_16px] block p-[_0.5rem]">
                 <div className="aside-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
                   <svg
                     width="27"
@@ -290,24 +252,17 @@ function Dashboard() {
                     History Section
                   </p>
                 </div>
-              </Link>
-              <Link href="/dashboard" className="mb-[_16px] block p-[_0.5rem]">
-                <div className="aside-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
-                  {/* <Image src="/assets/images/power-consumption-icon.svg"  alt='icon'width={25} height={25} priority className='icon'/> */}
-                  <svg
-                    width="27"
-                    height="27"
-                    viewBox="0 0 27 27"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M18.0113 7.875L18 4.5C18 3.88125 17.4937 3.375 16.875 3.375C16.2563 3.375 15.75 3.88125 15.75 4.5V7.875H11.25V4.5C11.25 3.88125 10.7438 3.375 10.125 3.375C9.50625 3.375 9 3.88125 9 4.5V7.875H8.98875C7.7625 7.875 6.75 8.8875 6.75 10.1137V15.3562C6.75 15.9525 6.98625 16.5263 7.4025 16.9425L10.6875 20.25V22.5C10.6875 23.1187 11.1937 23.625 11.8125 23.625H15.1875C15.8062 23.625 16.3125 23.1187 16.3125 22.5V20.25L19.5975 16.965C20.0138 16.5375 20.25 15.9637 20.25 15.3675V10.1137C20.25 8.87625 19.2488 7.875 18.0113 7.875Z"
-                      fill="#1E1E1E"
-                    />
-                  </svg>
+              </Link> */}
+              <Link
+                href="/dashboard/next-payment"
+                className="mb-[_16px] block p-[_0.5rem]"
+              >
+                <div className="aside-item text-[_#25672F]  flex flex-row items-center gap-2 hover:text-[_#25672F]">
+                  <FaCalculator
+                    style={{ fontSize: "1.4rem", marginLeft: "0.2rem" }}
+                  />
                   <p className="text-md font-[_400] hover:font-[_600] hover:text-lg">
-                    Power Consumption
+                    Next Pay Calculator
                   </p>
                 </div>
               </Link>
@@ -338,31 +293,9 @@ function Dashboard() {
               </Link>
               <Link href="/dashboard" className="mb-[_16px] block p-[_0.5rem]">
                 <div className="aside-item flex flex-row items-center gap-2 hover:text-[_#25672F]">
-                  <svg
-                    width="27"
-                    height="27"
-                    viewBox="0 0 27 27"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_38_5587)">
-                      <path
-                        d="M4.5 10.2075H10.2075V4.5H18V10.785H19.5V4.5C19.5 4.10218 19.342 3.72064 19.0607 3.43934C18.7794 3.15804 18.3978 3 18 3H8.1525L3 8.1525V22.5C3 22.8978 3.15804 23.2794 3.43934 23.5607C3.72064 23.842 4.10218 24 4.5 24H18C18.3978 24 18.7794 23.842 19.0607 23.5607C19.342 23.2794 19.5 22.8978 19.5 22.5H4.5V10.2075ZM4.5 8.7675L8.7675 4.5H9V9H4.5V8.7675Z"
-                        fill="black"
-                      />
-                      <path
-                        d="M21.24 12.2625C21.0965 12.1396 20.912 12.0754 20.7232 12.0827C20.5345 12.09 20.3554 12.1683 20.2218 12.3018C20.0883 12.4354 20.01 12.6144 20.0027 12.8032C19.9954 12.992 20.0596 13.1765 20.1825 13.32L22.62 15.75H13.5C13.3011 15.75 13.1103 15.829 12.9697 15.9697C12.829 16.1103 12.75 16.3011 12.75 16.5C12.75 16.6989 12.829 16.8897 12.9697 17.0303C13.1103 17.171 13.3011 17.25 13.5 17.25H22.6425L20.1825 19.71C20.104 19.7772 20.0402 19.86 19.9952 19.953C19.9502 20.0461 19.9249 20.1474 19.9209 20.2507C19.9169 20.354 19.9343 20.457 19.972 20.5532C20.0097 20.6495 20.0669 20.7369 20.14 20.81C20.2131 20.8831 20.3005 20.9403 20.3968 20.978C20.493 21.0157 20.596 21.0331 20.6993 21.0291C20.8026 21.0251 20.9039 20.9998 20.997 20.9548C21.09 20.9098 21.1728 20.846 21.24 20.7675L25.5 16.5L21.24 12.2625Z"
-                        fill="black"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_38_5587">
-                        <rect width="27" height="27" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
+                  <IoNotificationsOutline style={{ fontSize: "1.7rem" }} />
                   <p className="text-md font-[_400] hover:font-[_600] hover:text-lg">
-                    Export Data
+                    Notification
                   </p>
                 </div>
               </Link>
@@ -429,64 +362,80 @@ function Dashboard() {
             </aside>
           )}
           <main className="h-full lg:col-span-9 main-contents rounded-md px-4">
-            <div className="main-header grid lg:grid-cols-12 gap-4 mb-6">
-              <figure className="col-span-6 card rounded-[_10px] bg-[_#fff] p-4">
-                <h3 className="text-md text-[_#25672F] font-[_800] pb-2">
-                  Monthly Power Consumption
-                </h3>
-                <div className="card-row grid grid-cols-12 gap-4">
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3">
-                    <span className="high h-9 block p-2 mb-2 bg-[_#2956c9] rounded-[_4px]"></span>
-                    <p className="text-center">800kwh</p>
-                    <p className="text-center">High</p>
-                  </figure>
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3">
-                    <span className="mid h-9 block p-2 mb-2 bg-[_#bab01b] rounded-[_4px]"></span>
-                    <p className="text-center">620kwh</p>
-                    <p className="text-center">Mid</p>
-                  </figure>
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3 ">
-                    <span className="low h-9 block p-2 mb-2 bg-[_#9c9b95] rounded-[_4px]"></span>
-                    <p className="text-center">320kwh</p>
-                    <p className="text-center">Normal</p>
-                  </figure>
-                </div>
-              </figure>
-
-              {/* col-2 */}
-              <figure className="col-span-6 card rounded-[_10px] bg-[_#fff] p-4">
-                <h3 className="text-md text-[_#25672F] font-[_800] pb-2">
-                  Weekly Power Consumption
-                </h3>
-                <div className="card-row grid grid-cols-12 gap-4">
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3">
-                    <span className="high h-9 block p-2 mb-2 bg-[_#2956c9] rounded-[_4px]"></span>
-                    <p className="text-center">800kwh</p>
-                    <p className="text-center">High</p>
-                  </figure>
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3">
-                    <span className="mid h-9 block p-2 mb-2 bg-[_#bab01b] rounded-[_4px]"></span>
-                    <p className="text-center">620kwh</p>
-                    <p className="text-center">Mid</p>
-                  </figure>
-                  <figure className="col-span-4 md:col-span-2 lg:col-span-3 ">
-                    <span className="low h-9 block p-2 mb-2 bg-[_#9c9b95] rounded-[_4px]"></span>
-                    <p className="text-center">320kwh</p>
-                    <p className="text-center">Normal</p>
-                  </figure>
-                </div>
-              </figure>
-            </div>
-
-            <div className="main-body bg-[_#fff] p-4 rounded-md">
-              <h3 className="text-sm font-semibold pl-24">
-                No 23 Ziks Drive UNN
+            <div className="main-body bg-[_#fff] p-4 rounded-md pay-container">
+              <h3 className="text-lg font-semibold mb-6">
+                Next Payment Calculator
               </h3>
+              <p className=" mb-2">
+                A calculator that shares the next payment based on the previous
+                energy consumption
+              </p>
+              <div className="pay-sub-container">
+                <p className=" text-sm mb-6 text-center">
+                  Enter the energy consumed by tenant 1 and 2 after the previous
+                  payment. Get the details from your &quot;Tenants Power
+                  Usage&quot; page
+                </p>
+                <div className="pay-input-container">
+                  <div>
+                    <input
+                      className=" border border-black text-center placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-50 md:w-96"
+                      placeholder="Energy Consumed By Tenant 1(kwh)"
+                      value={energy1}
+                      name="total"
+                      id="energy1"
+                      type="number"
+                      onChange={(e) => setEnergy1(e.target.value)}
+                    />
+                    kwh
+                  </div>
+
+                  <div>
+                    <input
+                      className=" border border-black text-center placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-50 md:w-96"
+                      placeholder="Energy Consumed By Tenant 2(kwh)"
+                      value={energy2}
+                      name="total"
+                      id="energy2"
+                      type="number"
+                      onChange={(e) => setEnergy2(e.target.value)}
+                    />
+                    kwh
+                  </div>
+                  <div>
+                    <input
+                      className=" border border-black text-center placeholder:text-sm placeholder:text-center rounded-md m-2 pt-2 pb-2 w-50 md:w-96"
+                      placeholder="Amount You Want To Buy Next(Naira)"
+                      value={amount}
+                      name="total"
+                      id="amount"
+                      type="number"
+                      onChange={(e) => setAmount(e.target.value)}
+                    />
+                    &#8358;<span style={{ color: "transparent" }}>w.</span>
+                  </div>
+
+                  <p>Tenant 1 pays: {ten1 ? ten1 : ""}&#8358;</p>
+                  <p>Tenant 2 pays: {ten2 ? ten2 : ""}&#8358;</p>
+                  {ten1 < 0 && (
+                    <div>
+                      Tenant 2 will pay for the whole bill and balance Tenant 1{" "}
+                      {parseFloat(ten2) - parseFloat(amount)}&#8358;
+                    </div>
+                  )}
+                  {ten2 < 0 && (
+                    <div>
+                      Tenant 1 will pay for the whole bill and balance Tenant 2{" "}
+                      {parseFloat(ten1) - parseFloat(amount)}&#8358;
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </main>
         </div>
         <div className="footer-contents mt-4 px-4 mb-8 text-right">
-          <button className="mr-4 bg-[_#fff] w-[_45px] h-[_45px] rounded-[_50%] text-center p-3">
+          <button className="mr-4 bg-[_#fff] w-[_45px] h-[_45px] rounded-[_50%] text-center p-2">
             <Link href="/dashboard" className="inline-block">
               <svg
                 width="19"
@@ -513,9 +462,6 @@ function Dashboard() {
                 />
               </svg>
             </Link>
-          </button>
-          <button className="text-center rounded-lg bg-[_#2956c9] p-[_0.4rem] text-[_#fff] w-[_99px]">
-            Export
           </button>
         </div>
       </section>
