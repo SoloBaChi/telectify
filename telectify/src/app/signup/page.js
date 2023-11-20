@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Nav from "../components/nav";
@@ -15,7 +15,7 @@ export default function Signup() {
     email: "",
   });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e) => {
     setSignup((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -29,7 +29,7 @@ export default function Signup() {
     setErrorMessage(error);
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = {

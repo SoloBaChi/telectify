@@ -20,7 +20,7 @@ function Dashboard() {
 
   useEffect(() => {
     userProfile();
-  }, [setUser]);
+  }, []);
 
   const userProfile = async () => {
     try {
@@ -49,7 +49,7 @@ function Dashboard() {
     <>
       <header className="flex flex-row items-center justify-between py-4  px-4 lg:px-10">
         <div className="item-one">
-          <Link href="/dashboard">
+          <Link href="/">
             <Image
               src="/assets/images/telectify-logo.svg"
               alt="telectify logo"
