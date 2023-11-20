@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -24,7 +24,7 @@ function Login() {
   };
 
   // Handle input change
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e) => {
     setLogin((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -37,7 +37,7 @@ function Login() {
     setErrorMessage(error);
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = {
@@ -149,7 +149,9 @@ function Login() {
             </div>
             {/* return error message*/}
             {login.status === "success" ? (
-              router.push("/dashboard")
+              <span style={{ color: "green" }}>
+                please wait... {router.push("/dashboard")}
+              </span>
             ) : (
               <span style={{ color: "red" }}>{errorMessage}</span>
             )}
