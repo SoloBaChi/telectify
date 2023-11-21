@@ -47,8 +47,8 @@ export default function Home() {
             <Image
               src="/home/image1.jpg"
               alt="image1"
-              height={100}
-              width={100}
+              height={1000}
+              width={1000}
               className="feature-image"
             />
             <div className="mb-32 grid text-center lg:w-full lg:mb-0 md:grid-cols-2 md:gap-4 lg:grid-cols-2 lg:text-left feature-cards">
