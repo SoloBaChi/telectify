@@ -3,30 +3,47 @@ import { useRef, useEffect, useState } from "react";
 import { Chart } from "chart.js/auto";
 import { FaInfoCircle } from "react-icons/fa";
 
-export default function BarChart() {
+export default function BarChart(props) {
   const chartRef = useRef(null);
   const [info, setInfo] = useState(false);
   const [sum, setSum] = useState(0);
-
   const [mainData, setMainData] = useState([]);
+
+  let user = props.user.user;
+  console.log(user);
+  // "No 21 Enugu Road" will be replaced with user
   useEffect(() => {
-    async function fetchData() {
-      const channelID = "2344245";
-      const apiKey = "UBKXF666GHT15STZ";
-      const resultsCount = 10; // Adjust as needed
+    if (user == "No 21 Enugu Road") {
+      async function fetchData() {
+        const channelID = "2344245";
+        const apiKey = "UBKXF666GHT15STZ";
+        const resultsCount = 10; // Adjust as needed
 
-      const url = `https://api.thingspeak.com/channels/${channelID}/feeds.json?api_key=${apiKey}&results=${resultsCount}`;
+        const url = `https://api.thingspeak.com/channels/${channelID}/feeds.json?api_key=${apiKey}&results=${resultsCount}`;
 
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setMainData(data.feeds);
-        // Process the data as needed in your Next.js app
-      } catch (error) {
-        console.error("Error fetching data from ThingSpeak:", error);
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          setMainData(data.feeds);
+          // Process the data as needed in your Next.js app
+        } catch (error) {
+          console.error("Error fetching data from ThingSpeak:", error);
+        }
       }
+      fetchData();
+    } else {
+      const node = [
+        { field7: 0 },
+        { field7: 0 },
+        { field7: 0 },
+        { field7: 0 },
+        { field7: 0 },
+        { field7: 0 },
+        { field7: 0 },
+        { field7: 0 },
+      ];
+      setMainData(node);
     }
-    fetchData();
   }, []);
 
   useEffect(() => {
@@ -45,19 +62,20 @@ export default function BarChart() {
       }, 0);
 
       setSum(arraySum);
+
+      const today = new Date();
+      const labels = [];
+      for (let i = 7; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(today.getDate() - i);
+        const formattedDate = `${date.getDate()}/${date.getMonth() + 1}`;
+        labels.push(formattedDate);
+      }
+
       const newChart = new Chart(context, {
         type: "bar",
         data: {
-          labels: [
-            "10/11",
-            "11/11",
-            "12/11",
-            "13/11",
-            "14/11",
-            "16/11",
-            "17/11",
-            "18/11",
-          ],
+          labels: labels,
           datasets: [
             {
               barPercentage: 10,
@@ -109,11 +127,21 @@ export default function BarChart() {
     }
   }
   return (
-    <div style={{ position: "relative", width: "98vw", height: "35vh" }}>
+    <div style={{ position: "relative", width: "80vw", height: "35vh" }}>
       {info && (
         <div className="bar-info p-4">
-          This is the energy consumed starting from the most recent reset or
-          credit purchase
+          {/* "No 21 Enugu Road" will be replaced with user */}
+          {user == "No 21 Enugu Road" ? (
+            <>
+              This is the energy consumed starting from the most recent reset or
+              credit purchase
+            </>
+          ) : (
+            <>
+              It would seem you have not purchased the device or have not been
+              configured to receive data from your device
+            </>
+          )}
         </div>
       )}
 

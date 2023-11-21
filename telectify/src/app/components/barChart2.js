@@ -3,33 +3,61 @@ import { useRef, useEffect, useState } from "react";
 import { Chart } from "chart.js/auto";
 import { FaInfoCircle } from "react-icons/fa";
 
-export default function BarChart2() {
+export default function BarChart2(props) {
+  const [width, setWidth] = useState();
   const chartRef = useRef(null);
   const [info, setInfo] = useState(false);
   const [sum, setSum] = useState(0);
 
   const [mainData, setMainData] = useState([]);
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
-    async function fetchData() {
-      const channelID = "2344245";
-      const apiKey = "UBKXF666GHT15STZ";
-      const resultsCount = 10; // Adjust as needed
+    setWidth(window.innerWidth);
+  }, []);
 
-      const url = `https://api.thingspeak.com/channels/${channelID}/feeds.json?api_key=${apiKey}&results=${resultsCount}`;
+  let user = props.user.user;
+  console.log(user);
 
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setMainData(data.feeds);
-        // Process the data as needed in your Next.js app
-      } catch (error) {
-        console.error("Error fetching data from ThingSpeak:", error);
+  useEffect(() => {
+    if (user == "No 21 Enugu Road") {
+      async function fetchData() {
+        const channelID = "2344245";
+        const apiKey = "UBKXF666GHT15STZ";
+        const resultsCount = 10; // Adjust as needed
+
+        const url = `https://api.thingspeak.com/channels/${channelID}/feeds.json?api_key=${apiKey}&results=${resultsCount}`;
+
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          setMainData(data.feeds);
+          // Process the data as needed in your Next.js app
+        } catch (error) {
+          console.error("Error fetching data from ThingSpeak:", error);
+        }
       }
+      fetchData();
+    } else {
+      const node = [
+        { field8: 0 },
+        { field8: 0 },
+        { field8: 0 },
+        { field8: 0 },
+        { field8: 0 },
+        { field8: 0 },
+        { field8: 0 },
+        { field8: 0 },
+      ];
+      setMainData(node);
     }
-    fetchData();
   }, []);
 
   useEffect(() => {
+    if (width < 992) {
+      setOpen(!open);
+    }
+    console.log(open);
     if (chartRef.current) {
       if (chartRef.current.chart) {
         chartRef.current.chart.destroy();
@@ -45,19 +73,20 @@ export default function BarChart2() {
       }, 0);
 
       setSum(arraySum);
+
+      const today = new Date();
+      const labels = [];
+      for (let i = 7; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(today.getDate() - i);
+        const formattedDate = `${date.getDate()}/${date.getMonth() + 1}`;
+        labels.push(formattedDate);
+      }
+
       const newChart = new Chart(context, {
         type: "bar",
         data: {
-          labels: [
-            "10/11",
-            "11/11",
-            "12/11",
-            "13/11",
-            "14/11",
-            "16/11",
-            "17/11",
-            "18/11",
-          ],
+          labels: labels,
           datasets: [
             {
               barPercentage: 0.2,
@@ -86,7 +115,11 @@ export default function BarChart2() {
               },
             },
             y: {
-              display: false,
+              display: open,
+              beginAtZero: true,
+              grid: {
+                display: false,
+              },
             },
           },
         },
@@ -106,11 +139,20 @@ export default function BarChart2() {
     }
   }
   return (
-    <div style={{ position: "relative", width: "98vw", height: "35vh" }}>
+    <div style={{ position: "relative", width: "80vw", height: "35vh" }}>
       {info && (
         <div className="bar-info p-4">
-          This is the energy consumed starting from the most recent reset or
-          credit purchase
+          {user == "No 21 Enugu Road" ? (
+            <>
+              This is the energy consumed starting from the most recent reset or
+              credit purchase
+            </>
+          ) : (
+            <>
+              It would seem you have not purchased the device or have not been
+              configured to receive data from your device
+            </>
+          )}
         </div>
       )}
       <p className=" text-center flex items-center ml-10">
